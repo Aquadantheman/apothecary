@@ -106,34 +106,74 @@ export default function Home() {
             </div>
           ) : (
             <>
-              {/* Severity Summary Bar */}
+              {/* Analysis Summary */}
               {analysis && (
-                <div className="flex gap-3 mb-4 flex-wrap">
-                  {analysis.counts.critical > 0 && (
-                    <span className="px-3 py-1 rounded-full text-sm font-medium bg-red-500/15 text-red-400 border border-red-500/30">
-                      🔴 {analysis.counts.critical} Critical
-                    </span>
-                  )}
-                  {analysis.counts.high > 0 && (
-                    <span className="px-3 py-1 rounded-full text-sm font-medium bg-orange-500/15 text-orange-400 border border-orange-500/30">
-                      🟠 {analysis.counts.high} High
-                    </span>
-                  )}
-                  {analysis.counts.moderate > 0 && (
-                    <span className="px-3 py-1 rounded-full text-sm font-medium bg-yellow-500/15 text-yellow-400 border border-yellow-500/30">
-                      🟡 {analysis.counts.moderate} Moderate
-                    </span>
-                  )}
-                  {analysis.counts.low > 0 && (
-                    <span className="px-3 py-1 rounded-full text-sm font-medium bg-blue-500/15 text-blue-400 border border-blue-500/30">
-                      🔵 {analysis.counts.low} Low
-                    </span>
-                  )}
-                  {analysis.counts.beneficial > 0 && (
-                    <span className="px-3 py-1 rounded-full text-sm font-medium bg-green-500/15 text-green-400 border border-green-500/30">
-                      🟢 {analysis.counts.beneficial} Beneficial
-                    </span>
-                  )}
+                <div className={`rounded-lg border p-4 mb-4 ${
+                  (analysis.counts.critical || 0) > 0
+                    ? "border-red-500/30 bg-red-500/5"
+                    : (analysis.counts.high || 0) > 0
+                      ? "border-orange-500/20 bg-orange-500/5"
+                      : (analysis.counts.beneficial || 0) > 0
+                        ? "border-green-500/20 bg-green-500/5"
+                        : "border-[var(--color-border)] bg-[var(--color-surface)]"
+                }`}>
+                  <p className="text-sm leading-relaxed">
+                    {(analysis.counts.critical || 0) > 0 ? (
+                      <>
+                        <span className="font-semibold text-red-400">⚠ Action needed:</span>{" "}
+                        {analysis.counts.critical} combination{(analysis.counts.critical || 0) > 1 ? "s" : ""} in your
+                        stack {(analysis.counts.critical || 0) > 1 ? "are" : "is"} potentially dangerous.
+                        Review the critical interactions below and discuss with your prescriber or pharmacist before continuing.
+                      </>
+                    ) : (analysis.counts.high || 0) > 0 ? (
+                      <>
+                        <span className="font-semibold text-orange-400">Worth reviewing:</span>{" "}
+                        No dangerous combinations detected, but {analysis.counts.high} interaction{(analysis.counts.high || 0) > 1 ? "s" : ""} may
+                        affect how your medications work. These are common in prescribed regimens — review the details
+                        below and mention to your prescriber at your next visit.
+                        {(analysis.counts.beneficial || 0) > 0 && (
+                          <span className="text-green-400"> {analysis.counts.beneficial} beneficial combination{(analysis.counts.beneficial || 0) > 1 ? "s" : ""} detected.</span>
+                        )}
+                      </>
+                    ) : (analysis.counts.moderate || 0) > 0 ? (
+                      <>
+                        <span className="font-semibold text-green-400">Looking good.</span>{" "}
+                        No significant interactions detected. {analysis.counts.moderate} minor note{(analysis.counts.moderate || 0) > 1 ? "s" : ""} to
+                        be aware of, but nothing that requires immediate action.
+                        {(analysis.counts.beneficial || 0) > 0 && (
+                          <span className="text-green-400"> {analysis.counts.beneficial} beneficial combination{(analysis.counts.beneficial || 0) > 1 ? "s" : ""} detected.</span>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        <span className="font-semibold text-green-400">All clear.</span>{" "}
+                        No significant interactions detected between your substances.
+                        {(analysis.counts.beneficial || 0) > 0 && (
+                          <span> {analysis.counts.beneficial} beneficial combination{(analysis.counts.beneficial || 0) > 1 ? "s" : ""} found.</span>
+                        )}
+                      </>
+                    )}
+                  </p>
+
+                  {/* Compact severity counts */}
+                  <div className="flex gap-3 mt-2 flex-wrap">
+                    {Object.entries(analysis.counts)
+                      .filter(([, count]) => count > 0)
+                      .map(([severity, count]) => {
+                        const styles: Record<string, string> = {
+                          critical: "text-red-400",
+                          high: "text-orange-400",
+                          moderate: "text-yellow-400",
+                          low: "text-blue-400",
+                          beneficial: "text-green-400",
+                        };
+                        return (
+                          <span key={severity} className={`text-xs ${styles[severity] || "text-gray-400"}`}>
+                            {count} {severity}
+                          </span>
+                        );
+                      })}
+                  </div>
                 </div>
               )}
 
@@ -200,12 +240,14 @@ export default function Home() {
               )}
 
               {/* Disclaimer */}
-              <p className="mt-6 text-xs text-[var(--color-text-muted)] leading-relaxed">
-                This report is for informational purposes only and does not
-                constitute medical advice. Always consult a qualified healthcare
-                professional before starting, stopping, or changing any
-                medication or supplement.
-              </p>
+              <div className="mt-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
+                <p className="text-xs text-[var(--color-text-muted)] leading-relaxed">
+                  <span className="font-medium text-[var(--color-text)]">About this analysis:</span>{" "}
+                  Apothecary identifies potential interactions based on known pharmacological pathways (CYP450 metabolism, receptor activity, nutrient depletions). 
+                  This is not a substitute for professional medical advice. Many flagged interactions are common in prescribed regimens and are already accounted for by your doctor. 
+                  Use this as a conversation starter with your prescriber or pharmacist — not as a reason to change your medications on your own.
+                </p>
+              </div>
             </>
           )}
         </div>
