@@ -9,7 +9,6 @@ from pydantic import BaseModel
 from apothecary.data.loader import SubstanceDatabase
 from apothecary.engine.interaction_engine import analyze_stack
 from apothecary.engine.timing_engine import generate_timeline
-from apothecary.models.interaction import Severity
 
 # === Load Database ===
 
@@ -22,12 +21,12 @@ db.load_directory(DATA_DIR)
 app = FastAPI(
     title="Apothecary API",
     description="Drug-supplement interaction analysis, timing optimization, and mechanism explanation.",
-    version="0.2.0",
+    version="0.5.0",
 )
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=["http://localhost:3000", "http://localhost:3002", "http://localhost:3003", "http://127.0.0.1:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -67,6 +66,9 @@ class DepletionGapResponse(BaseModel):
     confidence: str
     clinical_significance: str
     suggestion: str
+    food_sources: list[str] = []
+    symptoms: list[str] = []
+    lifestyle_tips: list[str] = []
 
 
 class AnalysisResponse(BaseModel):
@@ -103,6 +105,53 @@ class AnalyzeRequest(BaseModel):
     substance_ids: list[str]
     wake_time: str = "07:00"
     sleep_target: str = "23:00"
+
+
+# === Helpers ===
+
+def _serialize_interactions(interactions) -> list[InteractionResponse]:
+    return [
+        InteractionResponse(
+            substances=i.substances,
+            type=i.type.value,
+            severity=i.severity.value,
+            confidence=i.confidence.value,
+            title=i.title,
+            mechanism=i.mechanism,
+            recommendation=i.recommendation,
+            pathway=i.pathway,
+            timing_relevant=i.timing_relevant,
+            timing_suggestion=i.timing_suggestion,
+        )
+        for i in interactions
+    ]
+
+
+def _serialize_gaps(gaps) -> list[DepletionGapResponse]:
+    return [
+        DepletionGapResponse(
+            nutrient=g.nutrient,
+            depleted_by=g.depleted_by,
+            mechanism=g.mechanism,
+            confidence=g.confidence.value,
+            clinical_significance=g.clinical_significance,
+            suggestion=g.suggestion,
+            food_sources=g.food_sources,
+            symptoms=g.symptoms,
+            lifestyle_tips=g.lifestyle_tips,
+        )
+        for g in gaps
+    ]
+
+
+def _build_analysis_response(result) -> AnalysisResponse:
+    return AnalysisResponse(
+        interactions=_serialize_interactions(result.interactions),
+        depletion_gaps=_serialize_gaps(result.depletion_gaps),
+        aggregate_serotonin_load=result.aggregate_serotonin_load,
+        aggregate_cardiovascular_flags=result.aggregate_cardiovascular_flags,
+        counts=result.interaction_count_by_severity,
+    )
 
 
 # === Endpoints ===
@@ -163,38 +212,7 @@ def analyze(request: AnalyzeRequest):
         raise HTTPException(status_code=400, detail="At least one substance required")
 
     result = analyze_stack(substances)
-
-    return AnalysisResponse(
-        interactions=[
-            InteractionResponse(
-                substances=i.substances,
-                type=i.type.value,
-                severity=i.severity.value,
-                confidence=i.confidence.value,
-                title=i.title,
-                mechanism=i.mechanism,
-                recommendation=i.recommendation,
-                pathway=i.pathway,
-                timing_relevant=i.timing_relevant,
-                timing_suggestion=i.timing_suggestion,
-            )
-            for i in result.interactions
-        ],
-        depletion_gaps=[
-            DepletionGapResponse(
-                nutrient=g.nutrient,
-                depleted_by=g.depleted_by,
-                mechanism=g.mechanism,
-                confidence=g.confidence.value,
-                clinical_significance=g.clinical_significance,
-                suggestion=g.suggestion,
-            )
-            for g in result.depletion_gaps
-        ],
-        aggregate_serotonin_load=result.aggregate_serotonin_load,
-        aggregate_cardiovascular_flags=result.aggregate_cardiovascular_flags,
-        counts=result.interaction_count_by_severity,
-    )
+    return _build_analysis_response(result)
 
 
 @app.post("/api/timeline", response_model=TimelineResponse)
@@ -251,38 +269,7 @@ def check_pair(substance_a: str, substance_b: str):
         raise HTTPException(status_code=404, detail=f"Substance '{substance_b}' not found")
 
     result = analyze_stack([a, b])
-
-    return AnalysisResponse(
-        interactions=[
-            InteractionResponse(
-                substances=i.substances,
-                type=i.type.value,
-                severity=i.severity.value,
-                confidence=i.confidence.value,
-                title=i.title,
-                mechanism=i.mechanism,
-                recommendation=i.recommendation,
-                pathway=i.pathway,
-                timing_relevant=i.timing_relevant,
-                timing_suggestion=i.timing_suggestion,
-            )
-            for i in result.interactions
-        ],
-        depletion_gaps=[
-            DepletionGapResponse(
-                nutrient=g.nutrient,
-                depleted_by=g.depleted_by,
-                mechanism=g.mechanism,
-                confidence=g.confidence.value,
-                clinical_significance=g.clinical_significance,
-                suggestion=g.suggestion,
-            )
-            for g in result.depletion_gaps
-        ],
-        aggregate_serotonin_load=result.aggregate_serotonin_load,
-        aggregate_cardiovascular_flags=result.aggregate_cardiovascular_flags,
-        counts=result.interaction_count_by_severity,
-    )
+    return _build_analysis_response(result)
 
 
 @app.get("/health")

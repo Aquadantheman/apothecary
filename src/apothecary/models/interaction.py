@@ -78,6 +78,9 @@ class DepletionGap(BaseModel):
     confidence: ConfidenceTier
     clinical_significance: str
     suggestion: str  # What supplement could address this
+    food_sources: list[str] = []  # Foods rich in this nutrient
+    symptoms: list[str] = []  # What deficiency feels like
+    lifestyle_tips: list[str] = []  # Non-supplement interventions
 
 
 class StackAnalysis(BaseModel):

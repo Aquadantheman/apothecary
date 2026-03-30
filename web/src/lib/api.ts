@@ -34,6 +34,9 @@ export interface DepletionGap {
   confidence: string;
   clinical_significance: string;
   suggestion: string;
+  food_sources: string[];
+  symptoms: string[];
+  lifestyle_tips: string[];
 }
 
 export interface AnalysisResult {

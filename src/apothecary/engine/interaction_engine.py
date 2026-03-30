@@ -433,6 +433,9 @@ def _check_beneficial(a: Substance, b: Substance) -> list[Interaction]:
     return interactions
 
 
+from apothecary.data.nutrients import get_nutrient_profile
+
+
 def _check_depletions(substances: list[Substance]) -> list[DepletionGap]:
     """Find nutrients being depleted by medications but not replenished by supplements."""
     # Collect all depletions
@@ -472,15 +475,18 @@ def _check_depletions(substances: list[Substance]) -> list[DepletionGap]:
             significance = max(src[3] for src in depletion_sources)
 
             # Generate suggestion based on nutrient
-            suggestions = {
-                "magnesium": "Consider magnesium glycinate 200-400mg in the evening",
-                "vitamin_c": "Consider vitamin C 500-1000mg daily",
-                "folate": "Consider methylfolate 400-800mcg daily",
-                "sodium": "Monitor sodium levels; usually addressed through diet",
-                "vitamin_b12": "Consider methylcobalamin B12 1000mcg daily",
-                "coq10": "Consider CoQ10 100-200mg daily",
-                "iron": "Consider iron supplementation if levels are low (test first)",
-            }
+            nutrient_profile = get_nutrient_profile(nutrient)
+
+            if nutrient_profile:
+                suggestion = nutrient_profile["supplement"]
+                food_sources = nutrient_profile.get("food_sources", [])
+                symptoms = nutrient_profile.get("symptoms", [])
+                lifestyle_tips = nutrient_profile.get("lifestyle_tips", [])
+            else:
+                suggestion = f"Consider supplementing {nutrient}"
+                food_sources = []
+                symptoms = []
+                lifestyle_tips = []
 
             gaps.append(
                 DepletionGap(
@@ -489,7 +495,10 @@ def _check_depletions(substances: list[Substance]) -> list[DepletionGap]:
                     mechanism=mechanism,
                     confidence=confidence,
                     clinical_significance=significance,
-                    suggestion=suggestions.get(nutrient, f"Consider supplementing {nutrient}"),
+                    suggestion=suggestion,
+                    food_sources=food_sources,
+                    symptoms=symptoms,
+                    lifestyle_tips=lifestyle_tips,
                 )
             )
 
