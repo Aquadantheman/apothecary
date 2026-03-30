@@ -119,53 +119,110 @@ def _check_cyp450(a: Substance, b: Substance) -> list[Interaction]:
                 continue
 
             # Inhibitor + Substrate = raised blood levels of substrate
+            # UNLESS the substrate is a prodrug activated by this enzyme
             if entry_a.role == CYPRole.INHIBITOR and entry_b.role == CYPRole.SUBSTRATE:
-                severity = (
-                    Severity.HIGH if entry_b.significance.value == "major" else Severity.MODERATE
-                )
-                interactions.append(
-                    Interaction(
-                        substances=[a.id, b.id],
-                        type=InteractionType.CYP450,
-                        severity=severity,
-                        confidence=min(entry_a.evidence, entry_b.evidence, key=_confidence_rank),
-                        title=f"{entry_a.enzyme} inhibition — {a.name} may raise {b.name} levels",
-                        mechanism=(
-                            f"{a.name} inhibits {entry_a.enzyme}, which is a {entry_b.significance.value} "
-                            f"metabolic pathway for {b.name}. This may slow {b.name}'s clearance "
-                            f"and effectively increase its blood concentration."
-                        ),
-                        recommendation=(
-                            f"Discuss with your prescriber. {b.name} blood levels may be higher "
-                            f"than expected when combined with {a.name}."
-                        ),
-                        pathway=entry_a.enzyme,
+                is_prodrug = entry_a.enzyme in b.metabolism.prodrug_activation
+
+                if is_prodrug:
+                    # Prodrug: inhibiting the activation enzyme REDUCES efficacy
+                    severity = (
+                        Severity.HIGH if entry_b.significance.value == "major" else Severity.MODERATE
                     )
-                )
+                    interactions.append(
+                        Interaction(
+                            substances=[a.id, b.id],
+                            type=InteractionType.CYP450,
+                            severity=severity,
+                            confidence=min(entry_a.evidence, entry_b.evidence, key=_confidence_rank),
+                            title=f"{entry_a.enzyme} inhibition — {a.name} may reduce {b.name} effectiveness",
+                            mechanism=(
+                                f"{b.name} is a prodrug that requires {entry_a.enzyme} to convert it "
+                                f"into its active form. {a.name} inhibits {entry_a.enzyme}, which may "
+                                f"prevent this activation and significantly reduce {b.name}'s therapeutic effect."
+                            ),
+                            recommendation=(
+                                f"Discuss with your prescriber. {b.name} may be less effective when "
+                                f"combined with {a.name}. An alternative medication that doesn't "
+                                f"require {entry_a.enzyme} activation may be needed."
+                            ),
+                            pathway=entry_a.enzyme,
+                        )
+                    )
+                else:
+                    # Normal drug: inhibiting metabolism RAISES levels
+                    severity = (
+                        Severity.HIGH if entry_b.significance.value == "major" else Severity.MODERATE
+                    )
+                    interactions.append(
+                        Interaction(
+                            substances=[a.id, b.id],
+                            type=InteractionType.CYP450,
+                            severity=severity,
+                            confidence=min(entry_a.evidence, entry_b.evidence, key=_confidence_rank),
+                            title=f"{entry_a.enzyme} inhibition — {a.name} may raise {b.name} levels",
+                            mechanism=(
+                                f"{a.name} inhibits {entry_a.enzyme}, which is a {entry_b.significance.value} "
+                                f"metabolic pathway for {b.name}. This may slow {b.name}'s clearance "
+                                f"and effectively increase its blood concentration."
+                            ),
+                            recommendation=(
+                                f"Discuss with your prescriber. {b.name} blood levels may be higher "
+                                f"than expected when combined with {a.name}."
+                            ),
+                            pathway=entry_a.enzyme,
+                        )
+                    )
 
             if entry_b.role == CYPRole.INHIBITOR and entry_a.role == CYPRole.SUBSTRATE:
-                severity = (
-                    Severity.HIGH if entry_a.significance.value == "major" else Severity.MODERATE
-                )
-                interactions.append(
-                    Interaction(
-                        substances=[a.id, b.id],
-                        type=InteractionType.CYP450,
-                        severity=severity,
-                        confidence=min(entry_a.evidence, entry_b.evidence, key=_confidence_rank),
-                        title=f"{entry_b.enzyme} inhibition — {b.name} may raise {a.name} levels",
-                        mechanism=(
-                            f"{b.name} inhibits {entry_b.enzyme}, which is a {entry_a.significance.value} "
-                            f"metabolic pathway for {a.name}. This may slow {a.name}'s clearance "
-                            f"and effectively increase its blood concentration."
-                        ),
-                        recommendation=(
-                            f"Discuss with your prescriber. {a.name} blood levels may be higher "
-                            f"than expected when combined with {b.name}."
-                        ),
-                        pathway=entry_b.enzyme,
+                is_prodrug = entry_b.enzyme in a.metabolism.prodrug_activation
+
+                if is_prodrug:
+                    severity = (
+                        Severity.HIGH if entry_a.significance.value == "major" else Severity.MODERATE
                     )
-                )
+                    interactions.append(
+                        Interaction(
+                            substances=[a.id, b.id],
+                            type=InteractionType.CYP450,
+                            severity=severity,
+                            confidence=min(entry_a.evidence, entry_b.evidence, key=_confidence_rank),
+                            title=f"{entry_b.enzyme} inhibition — {b.name} may reduce {a.name} effectiveness",
+                            mechanism=(
+                                f"{a.name} is a prodrug that requires {entry_b.enzyme} to convert it "
+                                f"into its active form. {b.name} inhibits {entry_b.enzyme}, which may "
+                                f"prevent this activation and significantly reduce {a.name}'s therapeutic effect."
+                            ),
+                            recommendation=(
+                                f"Discuss with your prescriber. {a.name} may be less effective when "
+                                f"combined with {b.name}. An alternative medication that doesn't "
+                                f"require {entry_b.enzyme} activation may be needed."
+                            ),
+                            pathway=entry_b.enzyme,
+                        )
+                    )
+                else:
+                    severity = (
+                        Severity.HIGH if entry_a.significance.value == "major" else Severity.MODERATE
+                    )
+                    interactions.append(
+                        Interaction(
+                            substances=[a.id, b.id],
+                            type=InteractionType.CYP450,
+                            severity=severity,
+                            confidence=min(entry_a.evidence, entry_b.evidence, key=_confidence_rank),
+                            title=f"{entry_b.enzyme} inhibition — {b.name} may raise {a.name} levels",
+                            mechanism=(
+                                f"{b.name} inhibits {entry_b.enzyme}, which is a {entry_a.significance.value} "
+                                f"metabolic pathway for {a.name}. This may slow {a.name}'s clearance "
+                                f"and effectively increase its blood concentration."
+                            ),
+                            recommendation=(
+                                f"Discuss with your prescriber. {a.name} blood levels may be higher "
+                                f"than expected when combined with {b.name}."
+                            ),
+                            pathway=entry_b.enzyme,
+                        )
+                    )
 
             # Inducer + Substrate = lowered blood levels of substrate
             if entry_a.role == CYPRole.INDUCER and entry_b.role == CYPRole.SUBSTRATE:

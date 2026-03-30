@@ -24,6 +24,8 @@ substance:
       evidence: established
     renal_excretion: false
     ph_dependent: false
+    prodrug_activation:
+    - CYP2D6
   receptor_activity: []
   nutrient_effects:
     depletions: []

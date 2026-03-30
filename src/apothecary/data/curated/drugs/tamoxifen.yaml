@@ -1,0 +1,71 @@
+# Tamoxifen (Nolvadex)
+# Source: FDA prescribing information, DrugBank
+# Last reviewed: 2026-03-31
+
+substance:
+  id: tamoxifen
+  name: "Tamoxifen (Nolvadex)"
+  type: prescription
+  category: serm
+  common_names:
+    - Tamoxifen
+    - Nolvadex
+    - Soltamox
+
+  pharmacokinetics:
+    formulations:
+      - name: tablet
+        label: "Oral Tablet"
+        absorption_minutes: 60
+        peak_plasma_hours: 5
+        half_life_hours: 168
+        duration_hours: 168
+
+  metabolism:
+    cyp450:
+      - enzyme: CYP2D6
+        role: substrate
+        significance: major
+        evidence: established
+      - enzyme: CYP3A4
+        role: substrate
+        significance: minor
+        evidence: established
+    renal_excretion: false
+    prodrug_activation:
+      - CYP2D6
+    notes: "CRITICAL PRODRUG: Tamoxifen is converted to its active metabolite endoxifen primarily by CYP2D6. CYP2D6 inhibitors (paroxetine, fluoxetine, bupropion, duloxetine) significantly reduce endoxifen levels and may compromise breast cancer treatment efficacy. CYP2D6 poor metabolizers also have reduced efficacy."
+
+  receptor_activity: []
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+
+  oxidative_profile:
+    generates_ros: false
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: morning
+    take_with_food: either
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    contraindications:
+      - "CYP2D6 inhibitors (paroxetine, fluoxetine, bupropion) - reduces anti-cancer efficacy"
+      - "Pregnancy (CRITICAL)"
+      - "History of deep vein thrombosis or pulmonary embolism"
+      - "Concurrent anticoagulant therapy (increased bleeding risk)"
+
+  metadata:
+    data_sources:
+      - "FDA: Nolvadex Prescribing Information"
+      - "PubMed PMID:20351882 (CYP2D6 and tamoxifen efficacy)"
+    last_reviewed: "2026-03-31"
+    review_status: curated
+    data_tier: tier_1

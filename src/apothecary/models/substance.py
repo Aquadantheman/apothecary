@@ -146,6 +146,10 @@ class Metabolism(BaseModel):
     renal_excretion: bool = False
     ph_dependent: bool = False
     notes: str | None = None
+    # Prodrug activation: list of CYP enzymes that ACTIVATE this drug
+    # (convert it from inactive prodrug to active metabolite).
+    # When these enzymes are inhibited, the drug becomes LESS effective, not more.
+    prodrug_activation: list[str] = []  # e.g. ["CYP2D6"] for codeine
 
 
 class ReceptorActivity(BaseModel):
