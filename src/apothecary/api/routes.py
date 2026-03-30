@@ -44,6 +44,7 @@ class SubstanceSummary(BaseModel):
     cyp450: list[str]
     serotonin_load: float
     common_names: list[str]
+    data_tier: str
 
 
 class InteractionResponse(BaseModel):
@@ -125,6 +126,7 @@ def list_substances(q: str | None = None):
             ],
             serotonin_load=s.safety.serotonin_load,
             common_names=s.common_names,
+            data_tier=s.metadata.data_tier.value if hasattr(s.metadata, 'data_tier') else "tier_1",
         )
         for s in sorted(results, key=lambda x: x.name)
     ]

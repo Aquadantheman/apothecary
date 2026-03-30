@@ -95,6 +95,19 @@ class ReviewStatus(str, Enum):
     COMMUNITY = "community"  # User-submitted, pending review
 
 
+class DataTier(str, Enum):
+    """Quality tier for substance data.
+
+    Tier 1: Hand-curated with full pharmacological context (timing, depletions, oxidative profile)
+    Tier 2: Auto-generated from DrugBank/PubChem — CYP450 and basic targets only
+    Tier 3: Community-submitted, unverified — display only, not used by interaction engine
+    """
+
+    TIER_1 = "tier_1"
+    TIER_2 = "tier_2"
+    TIER_3 = "tier_3"
+
+
 # === Component Models ===
 
 
@@ -249,6 +262,7 @@ class SubstanceMetadata(BaseModel):
     data_sources: list[str] = []
     last_reviewed: str | None = None
     review_status: ReviewStatus = ReviewStatus.AUTO_GENERATED
+    data_tier: DataTier = DataTier.TIER_1  # Default tier_1 for existing curated substances
 
 
 # === Main Model ===

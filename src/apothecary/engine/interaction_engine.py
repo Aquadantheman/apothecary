@@ -187,6 +187,25 @@ def _check_cyp450(a: Substance, b: Substance) -> list[Interaction]:
                     )
                 )
 
+            if entry_b.role == CYPRole.INDUCER and entry_a.role == CYPRole.SUBSTRATE:
+                interactions.append(
+                    Interaction(
+                        substances=[a.id, b.id],
+                        type=InteractionType.CYP450,
+                        severity=Severity.MODERATE,
+                        confidence=min(entry_a.evidence, entry_b.evidence, key=_confidence_rank),
+                        title=f"{entry_b.enzyme} induction — {b.name} may reduce {a.name} efficacy",
+                        mechanism=(
+                            f"{b.name} induces {entry_b.enzyme}, which metabolizes {a.name}. "
+                            f"This may accelerate {a.name}'s clearance and reduce its effectiveness."
+                        ),
+                        recommendation=(
+                            f"Monitor {a.name} efficacy. Dose adjustment may be needed."
+                        ),
+                        pathway=entry_b.enzyme,
+                    )
+                )
+
     return interactions
 
 

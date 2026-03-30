@@ -5,6 +5,7 @@ from apothecary.models.substance import (
     Substance,
     SubstanceType,
     CYPRole,
+    DataTier,
     NeurotransmitterSystem,
     Direction,
     Magnitude,
