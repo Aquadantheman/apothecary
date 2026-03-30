@@ -136,7 +136,7 @@ export function StackList({ substances, onRemove, serotoninLoad, cvFlags }: Prop
                   <span className="text-[10px] opacity-50">ⓘ</span>
                 </span>
                 <span className={`font-medium ${serotoninCtx.color}`}>
-                  {serotoninCtx.label}
+                  {serotoninLoad!.toFixed(2)} · {serotoninCtx.label}
                 </span>
               </button>
               {showSerotoninInfo && (

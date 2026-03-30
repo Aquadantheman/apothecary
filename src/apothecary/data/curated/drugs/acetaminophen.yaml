@@ -1,0 +1,80 @@
+# Acetaminophen (Tylenol)
+# Source: FDA, DrugBank
+# Last reviewed: 2026-03-31
+
+substance:
+  id: acetaminophen
+  name: "Acetaminophen (Tylenol)"
+  type: prescription
+  category: analgesic
+  common_names:
+    - Tylenol
+    - Acetaminophen
+    - Paracetamol
+    - APAP
+
+  pharmacokinetics:
+    formulations:
+      - name: tablet
+        label: "Oral Tablet"
+        absorption_minutes: 30
+        peak_plasma_hours: 1
+        half_life_hours: 3
+        duration_hours: 6
+
+  metabolism:
+    cyp450:
+      - enzyme: CYP2E1
+        role: substrate
+        significance: major
+        evidence: established
+      - enzyme: CYP1A2
+        role: substrate
+        significance: minor
+        evidence: established
+      - enzyme: CYP3A4
+        role: substrate
+        significance: minor
+        evidence: established
+    renal_excretion: true
+    notes: "Primarily metabolized by glucuronidation and sulfation. CYP2E1 produces the toxic metabolite NAPQI, which is detoxified by glutathione. Chronic alcohol use induces CYP2E1, increasing NAPQI production and liver toxicity risk."
+
+  receptor_activity: []
+
+  nutrient_effects:
+    depletions:
+      - nutrient: glutathione
+        mechanism: "NAPQI metabolite depletes hepatic glutathione stores"
+        evidence: established
+        clinical_significance: moderate
+    requirements: []
+
+  oxidative_profile:
+    generates_ros: true
+    mechanism: "NAPQI metabolite causes oxidative stress when glutathione is depleted"
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: null
+    take_with_food: either
+    notes: "Do not exceed 3000mg/day (2000mg/day if drinking alcohol). Check all medications for hidden acetaminophen — many cold/flu and pain combos contain it."
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    appetite_suppression: false
+    sleep_disruption: false
+    contraindications:
+      - "Severe liver disease"
+      - "Chronic alcohol use (3+ drinks/day) — increases liver toxicity risk"
+      - "Do NOT exceed 3000mg/day total from ALL sources"
+
+  metadata:
+    data_sources:
+      - "FDA: Tylenol Prescribing Information"
+    last_reviewed: "2026-03-31"
+    review_status: curated
+    data_tier: tier_1

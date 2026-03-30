@@ -7,6 +7,36 @@ import yaml
 from apothecary.models.substance import Substance
 
 
+def _fuzzy_match(query: str, target: str, max_distance: int = 2) -> bool:
+    """Check if query is within edit distance of target.
+
+    Simple Levenshtein distance — returns True if the query
+    is close enough to the target to be a likely typo.
+    """
+    if abs(len(query) - len(target)) > max_distance:
+        return False
+
+    # For short words, require closer match
+    if len(query) <= 4:
+        max_distance = 1
+
+    # Simple Levenshtein
+    m, n = len(query), len(target)
+    dp = list(range(n + 1))
+    for i in range(1, m + 1):
+        prev = dp[0]
+        dp[0] = i
+        for j in range(1, n + 1):
+            temp = dp[j]
+            if query[i - 1] == target[j - 1]:
+                dp[j] = prev
+            else:
+                dp[j] = 1 + min(prev, dp[j], dp[j - 1])
+            prev = temp
+
+    return dp[n] <= max_distance
+
+
 class SubstanceDatabase:
     """In-memory substance database loaded from curated YAML files.
 
@@ -54,17 +84,44 @@ class SubstanceDatabase:
         return self._substances.get(substance_id)
 
     def search(self, query: str) -> list[Substance]:
-        """Search substances by name, ID, or common names (case-insensitive)."""
-        query_lower = query.lower()
-        results = []
+        """Search substances by name, ID, common names, or category.
+
+        Uses substring matching first, then falls back to fuzzy matching
+        for typos (edit distance <= 2).
+        """
+        query_lower = query.lower().strip()
+        if not query_lower:
+            return []
+
+        exact_results = []
+        fuzzy_results = []
+
         for substance in self._substances.values():
-            if query_lower in substance.id.lower():
-                results.append(substance)
-            elif query_lower in substance.name.lower():
-                results.append(substance)
-            elif any(query_lower in cn.lower() for cn in substance.common_names):
-                results.append(substance)
-        return results
+            # Exact substring matches (high confidence)
+            searchable = [
+                substance.id.lower(),
+                substance.name.lower(),
+                substance.category.lower().replace("_", " "),
+            ] + [cn.lower() for cn in substance.common_names]
+
+            if any(query_lower in field for field in searchable):
+                exact_results.append(substance)
+                continue
+
+            # Fuzzy matching for typos (lower confidence)
+            if len(query_lower) >= 3:
+                for field in searchable:
+                    # Check each word in the field
+                    for word in field.split():
+                        if _fuzzy_match(query_lower, word):
+                            fuzzy_results.append(substance)
+                            break
+                    else:
+                        continue
+                    break
+
+        # Return exact matches first, then fuzzy
+        return exact_results + fuzzy_results
 
     def all(self) -> list[Substance]:
         """Return all loaded substances."""
