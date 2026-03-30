@@ -1,0 +1,42 @@
+# Paliperidone
+# Auto-generated tier 2 profile from DrugBank
+# Last generated: 2026-03-30
+
+substance:
+  id: paliperidone
+  name: Paliperidone
+  type: prescription
+  category: antipsychotic
+  common_names:
+  - Paliperidone
+  - Invega
+  pharmacokinetics:
+    formulations: []
+  metabolism:
+    cyp450: []
+    renal_excretion: false
+    ph_dependent: false
+  receptor_activity: []
+  nutrient_effects:
+    depletions: []
+    requirements: []
+  oxidative_profile:
+    generates_ros: false
+  absorption:
+    enhancers: []
+    inhibitors: []
+  timing:
+    optimal_window: morning
+    take_with_food: either
+  safety:
+    serotonin_load: 0.2
+    cardiovascular_flag: false
+    appetite_suppression: false
+    sleep_disruption: false
+    contraindications: []
+  metadata:
+    data_sources:
+    - DrugBank
+    last_reviewed: '2026-03-30'
+    review_status: auto_generated
+    data_tier: tier_2

@@ -468,6 +468,182 @@ BUILTIN_DRUGS = [
     ("Sumatriptan", "triptan", [], ["Imitrex"]),
     ("Sildenafil", "pde5_inhibitor", [("CYP3A4", "substrate")], ["Viagra"]),
     ("Tadalafil", "pde5_inhibitor", [("CYP3A4", "substrate")], ["Cialis"]),
+    # --- Diabetes (beyond metformin) ---
+    ("Glipizide", "sulfonylurea", [("CYP2C9", "substrate")], ["Glucotrol"]),
+    ("Glyburide", "sulfonylurea", [("CYP2C9", "substrate"), ("CYP3A4", "substrate")], ["DiaBeta"]),
+    ("Pioglitazone", "thiazolidinedione", [("CYP2C8", "substrate"), ("CYP3A4", "substrate")], ["Actos"]),
+    ("Sitagliptin", "dpp4_inhibitor", [("CYP3A4", "substrate")], ["Januvia"]),
+    ("Empagliflozin", "sglt2_inhibitor", [], ["Jardiance"]),
+    ("Dapagliflozin", "sglt2_inhibitor", [], ["Farxiga"]),
+    ("Semaglutide", "glp1_agonist", [], ["Ozempic", "Wegovy", "Rybelsus"]),
+    ("Liraglutide", "glp1_agonist", [], ["Victoza", "Saxenda"]),
+    ("Tirzepatide", "glp1_gip_agonist", [], ["Mounjaro", "Zepbound"]),
+    ("Insulin Glargine", "insulin", [], ["Lantus", "Basaglar"]),
+    ("Insulin Lispro", "insulin", [], ["Humalog"]),
+    # --- Muscle Relaxants ---
+    ("Cyclobenzaprine", "muscle_relaxant", [("CYP1A2", "substrate"), ("CYP2D6", "substrate"), ("CYP3A4", "substrate")], ["Flexeril"]),
+    ("Baclofen", "muscle_relaxant", [], ["Lioresal"]),
+    ("Tizanidine", "muscle_relaxant", [("CYP1A2", "substrate")], ["Zanaflex"]),
+    ("Methocarbamol", "muscle_relaxant", [], ["Robaxin"]),
+    # --- More Antibiotics ---
+    ("Levofloxacin", "antibiotic", [("CYP1A2", "inhibitor")], ["Levaquin"]),
+    ("Cephalexin", "antibiotic", [], ["Keflex"]),
+    ("Trimethoprim-Sulfamethoxazole", "antibiotic", [("CYP2C9", "inhibitor")], ["Bactrim", "Septra"]),
+    ("Nitrofurantoin", "antibiotic", [], ["Macrobid"]),
+    ("Clindamycin", "antibiotic", [("CYP3A4", "substrate")], ["Cleocin"]),
+    ("Erythromycin", "antibiotic", [("CYP3A4", "substrate"), ("CYP3A4", "inhibitor")], ["Erythrocin"]),
+    ("Rifampin", "antibiotic", [("CYP3A4", "inducer"), ("CYP2C9", "inducer"), ("CYP2C19", "inducer"), ("CYP1A2", "inducer"), ("CYP2B6", "inducer")], ["Rifadin"]),
+    # --- Respiratory ---
+    ("Fluticasone", "inhaled_corticosteroid", [("CYP3A4", "substrate")], ["Flovent", "Flonase"]),
+    ("Budesonide", "inhaled_corticosteroid", [("CYP3A4", "substrate")], ["Pulmicort", "Rhinocort"]),
+    ("Montelukast", "leukotriene_inhibitor", [("CYP2C8", "substrate"), ("CYP3A4", "substrate")], ["Singulair"]),
+    ("Tiotropium", "anticholinergic_bronchodilator", [], ["Spiriva"]),
+    ("Cetirizine", "antihistamine", [], ["Zyrtec"]),
+    ("Loratadine", "antihistamine", [("CYP3A4", "substrate"), ("CYP2D6", "substrate")], ["Claritin"]),
+    ("Fexofenadine", "antihistamine", [], ["Allegra"]),
+    ("Diphenhydramine", "antihistamine", [("CYP2D6", "substrate")], ["Benadryl"]),
+    # --- More Cardiovascular ---
+    ("Diltiazem", "calcium_channel_blocker", [("CYP3A4", "substrate"), ("CYP3A4", "inhibitor")], ["Cardizem"]),
+    ("Nifedipine", "calcium_channel_blocker", [("CYP3A4", "substrate")], ["Procardia"]),
+    ("Hydralazine", "vasodilator", [], ["Apresoline"]),
+    ("Spironolactone", "potassium_sparing_diuretic", [], ["Aldactone"]),
+    ("Furosemide", "loop_diuretic", [], ["Lasix"]),
+    ("Hydrochlorothiazide", "thiazide_diuretic", [], ["Microzide", "HCTZ"]),
+    ("Digoxin", "cardiac_glycoside", [], ["Lanoxin"]),
+    ("Amiodarone", "antiarrhythmic", [("CYP3A4", "substrate"), ("CYP2D6", "inhibitor"), ("CYP2C9", "inhibitor"), ("CYP3A4", "inhibitor")], ["Cordarone"]),
+    ("Sotalol", "antiarrhythmic_beta_blocker", [], ["Betapace"]),
+    ("Isosorbide Mononitrate", "nitrate", [], ["Imdur"]),
+    ("Ezetimibe", "cholesterol_absorption_inhibitor", [], ["Zetia"]),
+    # --- GI ---
+    ("Ranitidine", "h2_blocker", [], ["Zantac"]),
+    ("Famotidine", "h2_blocker", [], ["Pepcid"]),
+    ("Sucralfate", "gi_protectant", [], ["Carafate"]),
+    ("Dicyclomine", "antispasmodic", [], ["Bentyl"]),
+    ("Loperamide", "antidiarrheal", [("CYP3A4", "substrate"), ("CYP2C8", "substrate")], ["Imodium"]),
+    ("Docusate", "stool_softener", [], ["Colace"]),
+    ("Polyethylene Glycol", "osmotic_laxative", [], ["MiraLAX"]),
+    # --- Dermatology ---
+    ("Isotretinoin", "retinoid", [("CYP2C8", "substrate"), ("CYP3A4", "substrate")], ["Accutane"]),
+    ("Finasteride", "5_alpha_reductase_inhibitor", [("CYP3A4", "substrate")], ["Propecia", "Proscar"]),
+    ("Dutasteride", "5_alpha_reductase_inhibitor", [("CYP3A4", "substrate")], ["Avodart"]),
+    ("Minoxidil", "hair_growth", [], ["Rogaine"]),
+    # --- Psychiatric (additional) ---
+    ("Lithium", "mood_stabilizer", [], ["Lithobid"]),
+    ("Lurasidone", "antipsychotic", [("CYP3A4", "substrate")], ["Latuda"]),
+    ("Ziprasidone", "antipsychotic", [("CYP3A4", "substrate")], ["Geodon"]),
+    ("Paliperidone", "antipsychotic", [], ["Invega"]),
+    ("Cariprazine", "antipsychotic", [("CYP3A4", "substrate")], ["Vraylar"]),
+    ("Brexpiprazole", "antipsychotic", [("CYP2D6", "substrate"), ("CYP3A4", "substrate")], ["Rexulti"]),
+    ("Doxepin", "antidepressant", [("CYP2D6", "substrate"), ("CYP2C19", "substrate")], ["Silenor"]),
+    ("Imipramine", "antidepressant", [("CYP2D6", "substrate"), ("CYP2C19", "substrate"), ("CYP1A2", "substrate")], ["Tofranil"]),
+    ("Clomipramine", "antidepressant", [("CYP2D6", "substrate"), ("CYP2C19", "substrate"), ("CYP1A2", "substrate")], ["Anafranil"]),
+    ("Vilazodone", "ssri", [("CYP3A4", "substrate")], ["Viibryd"]),
+    ("Vortioxetine", "antidepressant", [("CYP2D6", "substrate")], ["Trintellix"]),
+    ("Esketamine", "antidepressant", [("CYP2B6", "substrate"), ("CYP3A4", "substrate")], ["Spravato"]),
+    # --- Seizure / Neuropathic Pain ---
+    ("Oxcarbazepine", "anticonvulsant", [("CYP3A4", "inducer")], ["Trileptal"]),
+    ("Levetiracetam", "anticonvulsant", [], ["Keppra"]),
+    ("Lacosamide", "anticonvulsant", [("CYP2C19", "substrate")], ["Vimpat"]),
+    ("Zonisamide", "anticonvulsant", [("CYP3A4", "substrate")], ["Zonegran"]),
+    # --- Sleep ---
+    ("Eszopiclone", "hypnotic", [("CYP3A4", "substrate")], ["Lunesta"]),
+    ("Lemborexant", "orexin_antagonist", [("CYP3A4", "substrate")], ["Dayvigo"]),
+    ("Suvorexant", "orexin_antagonist", [("CYP3A4", "substrate")], ["Belsomra"]),
+    ("Ramelteon", "melatonin_agonist", [("CYP1A2", "substrate"), ("CYP3A4", "substrate")], ["Rozerem"]),
+    ("Doxylamine", "antihistamine", [], ["Unisom"]),
+    # --- Migraine ---
+    ("Rizatriptan", "triptan", [], ["Maxalt"]),
+    ("Zolmitriptan", "triptan", [("CYP1A2", "substrate")], ["Zomig"]),
+    ("Eletriptan", "triptan", [("CYP3A4", "substrate")], ["Relpax"]),
+    ("Topiramate", "anticonvulsant", [("CYP2C19", "inhibitor")], ["Topamax"]),
+    # --- Urological ---
+    ("Tamsulosin", "alpha_blocker", [("CYP3A4", "substrate"), ("CYP2D6", "substrate")], ["Flomax"]),
+    ("Oxybutynin", "anticholinergic", [("CYP3A4", "substrate")], ["Ditropan"]),
+    # --- Autoimmune / Immunosuppressant ---
+    ("Methotrexate", "immunosuppressant", [], ["Trexall"]),
+    ("Hydroxychloroquine", "antimalarial_immunomodulator", [("CYP2D6", "substrate"), ("CYP3A4", "substrate"), ("CYP2D6", "inhibitor")], ["Plaquenil"]),
+    ("Mycophenolate", "immunosuppressant", [], ["CellCept"]),
+    ("Tacrolimus", "immunosuppressant", [("CYP3A4", "substrate")], ["Prograf"]),
+    ("Cyclosporine", "immunosuppressant", [("CYP3A4", "substrate"), ("CYP3A4", "inhibitor")], ["Neoral"]),
+    # --- Thyroid ---
+    ("Liothyronine", "thyroid_hormone", [], ["Cytomel", "T3"]),
+    ("Methimazole", "antithyroid", [], ["Tapazole"]),
+    # --- Gout ---
+    ("Allopurinol", "xanthine_oxidase_inhibitor", [], ["Zyloprim"]),
+    ("Colchicine", "antigout", [("CYP3A4", "substrate")], ["Colcrys"]),
+    # --- Osteoporosis ---
+    ("Alendronate", "bisphosphonate", [], ["Fosamax"]),
+    # --- Smoking Cessation ---
+    ("Varenicline", "smoking_cessation", [], ["Chantix"]),
+    ("Nicotine", "smoking_cessation", [("CYP2A6", "substrate")], ["Nicorette", "Nicoderm"]),
+    # --- Opioid Antagonists ---
+    ("Naltrexone", "opioid_antagonist", [], ["Vivitrol", "ReVia"]),
+    ("Naloxone", "opioid_antagonist", [], ["Narcan"]),
+    ("Buprenorphine", "opioid_partial_agonist", [("CYP3A4", "substrate")], ["Suboxone", "Subutex"]),
+    # --- Antivirals ---
+    ("Acyclovir", "antiviral", [], ["Zovirax", "Valtrex"]),
+    ("Oseltamivir", "antiviral", [], ["Tamiflu"]),
+    # --- Eye ---
+    ("Latanoprost", "prostaglandin_analog", [], ["Xalatan"]),
+    ("Timolol Ophthalmic", "beta_blocker_ophthalmic", [("CYP2D6", "substrate")], ["Timoptic"]),
+]
+
+# === Supplement / Dietary built-in database ===
+BUILTIN_SUPPLEMENTS = [
+    # Format: (name, type, category, [(enzyme, role), ...], [synonyms], serotonin_load)
+    # --- Herbal ---
+    ("Turmeric Curcumin", "supplement", "herbal", [("CYP3A4", "inhibitor"), ("CYP2C9", "inhibitor"), ("CYP1A2", "inhibitor")], ["Curcumin", "Turmeric"], 0.0),
+    ("Valerian Root", "supplement", "herbal", [], ["Valerian"], 0.0),
+    ("Rhodiola Rosea", "supplement", "adaptogen", [("CYP2C9", "inhibitor")], ["Rhodiola", "Golden Root"], 0.1),
+    ("Ginkgo Biloba", "supplement", "herbal", [("CYP2C9", "inducer"), ("CYP3A4", "inducer")], ["Ginkgo"], 0.0),
+    ("Milk Thistle", "supplement", "herbal", [("CYP2C9", "inhibitor"), ("CYP3A4", "inhibitor")], ["Silymarin"], 0.0),
+    ("Saw Palmetto", "supplement", "herbal", [], ["Saw Palmetto Berry"], 0.0),
+    ("Echinacea", "supplement", "herbal", [("CYP1A2", "inhibitor"), ("CYP3A4", "inhibitor")], [], 0.0),
+    ("Black Cohosh", "supplement", "herbal", [("CYP2D6", "inhibitor")], [], 0.0),
+    ("Ginseng Panax", "supplement", "adaptogen", [("CYP2D6", "inhibitor")], ["Korean Ginseng", "Red Ginseng", "Panax Ginseng"], 0.0),
+    ("Kava", "supplement", "herbal", [("CYP2E1", "inhibitor"), ("CYP2D6", "inhibitor")], ["Kava Kava"], 0.0),
+    # --- Nootropics ---
+    ("Lions Mane", "supplement", "nootropic", [], ["Lion's Mane", "Hericium erinaceus"], 0.0),
+    ("Bacopa Monnieri", "supplement", "nootropic", [], ["Bacopa", "Brahmi"], 0.0),
+    ("Alpha GPC", "supplement", "nootropic", [], ["Alpha-GPC", "Choline Alfoscerate"], 0.0),
+    ("Phosphatidylserine", "supplement", "nootropic", [], ["PS", "Phosphatidyl Serine"], 0.0),
+    ("GABA Supplement", "supplement", "amino_acid", [], ["GABA", "Gamma-Aminobutyric Acid"], 0.0),
+    ("L-Tyrosine", "supplement", "amino_acid", [], ["Tyrosine", "N-Acetyl L-Tyrosine", "NALT"], 0.0),
+    ("Taurine", "supplement", "amino_acid", [], ["L-Taurine"], 0.0),
+    # --- Vitamins / Minerals ---
+    ("Magnesium Citrate", "supplement", "mineral", [], ["Mag Citrate"], 0.0),
+    ("Magnesium Threonate", "supplement", "mineral", [], ["Magtein", "Mag Threonate"], 0.0),
+    ("Magnesium Oxide", "supplement", "mineral", [], ["Mag Oxide"], 0.0),
+    ("Vitamin B6", "supplement", "vitamin", [], ["Pyridoxine", "P5P", "Pyridoxal-5-Phosphate"], 0.0),
+    ("Vitamin K2", "supplement", "vitamin", [], ["MK-7", "Menaquinone"], 0.0),
+    ("Vitamin E", "supplement", "vitamin", [], ["Alpha-Tocopherol", "Tocopherol"], 0.0),
+    ("Vitamin A", "supplement", "vitamin", [], ["Retinol", "Beta-Carotene"], 0.0),
+    ("Selenium", "supplement", "mineral", [], ["Selenomethionine"], 0.0),
+    ("Chromium", "supplement", "mineral", [], ["Chromium Picolinate"], 0.0),
+    ("Potassium", "supplement", "mineral", [], ["Potassium Citrate", "Potassium Gluconate"], 0.0),
+    ("Biotin", "supplement", "vitamin", [], ["Vitamin B7", "Vitamin H"], 0.0),
+    ("Iodine", "supplement", "mineral", [], ["Potassium Iodide", "Kelp"], 0.0),
+    # --- Other Popular ---
+    ("Berberine", "supplement", "herbal", [("CYP2D6", "inhibitor"), ("CYP3A4", "inhibitor"), ("CYP2C9", "inhibitor")], [], 0.0),
+    ("Quercetin", "supplement", "flavonoid", [("CYP3A4", "inhibitor"), ("CYP2C9", "inhibitor")], [], 0.0),
+    ("Resveratrol", "supplement", "polyphenol", [("CYP3A4", "inhibitor"), ("CYP1A2", "inhibitor")], [], 0.0),
+    ("Collagen Peptides", "supplement", "protein", [], ["Collagen", "Hydrolyzed Collagen"], 0.0),
+    ("Probiotics", "supplement", "probiotic", [], ["Lactobacillus", "Bifidobacterium", "Probiotic"], 0.0),
+    ("Psyllium Husk", "supplement", "fiber", [], ["Metamucil", "Psyllium"], 0.0),
+    ("Elderberry", "supplement", "herbal", [], ["Sambucus", "Elderberry Extract"], 0.0),
+    ("Melatonin Gummies", "supplement", "hormone", [("CYP1A2", "substrate")], ["Melatonin Gummy"], 0.0),
+    ("Glucosamine", "supplement", "joint_support", [], ["Glucosamine Sulfate", "Glucosamine Chondroitin"], 0.0),
+    ("MSM", "supplement", "joint_support", [], ["Methylsulfonylmethane"], 0.0),
+    # --- Dietary Factors ---
+    ("Grapefruit", "dietary", "cyp_inhibitor", [("CYP3A4", "inhibitor"), ("CYP1A2", "inhibitor")], ["Grapefruit Juice"], 0.0),
+    ("Green Tea", "dietary", "stimulant_antioxidant", [("CYP3A4", "inhibitor")], ["Matcha", "EGCG"], 0.0),
+    ("Alcohol", "dietary", "depressant", [("CYP2E1", "inducer"), ("CYP3A4", "inducer")], ["Ethanol", "Beer", "Wine", "Liquor"], 0.0),
+    ("Charcoal Grilled Meat", "dietary", "cyp_inducer", [("CYP1A2", "inducer")], ["Charcoal Grilled Food", "BBQ"], 0.0),
+    ("Cruciferous Vegetables", "dietary", "cyp_inducer", [("CYP1A2", "inducer")], ["Broccoli", "Brussels Sprouts", "Cauliflower", "Cabbage"], 0.0),
+    ("Seville Orange", "dietary", "cyp_inhibitor", [("CYP3A4", "inhibitor")], ["Bitter Orange", "Bergamot"], 0.0),
+    ("Pomelo", "dietary", "cyp_inhibitor", [("CYP3A4", "inhibitor")], [], 0.0),
+    ("Black Pepper Piperine", "dietary", "bioavailability_enhancer", [("CYP3A4", "inhibitor"), ("CYP2D6", "inhibitor"), ("CYP1A2", "inhibitor")], ["Piperine", "BioPerine"], 0.0),
+    ("Tobacco Smoking", "dietary", "cyp_inducer", [("CYP1A2", "inducer"), ("CYP2B6", "inducer")], ["Cigarettes", "Smoking"], 0.0),
 ]
 
 
@@ -482,14 +658,24 @@ def import_builtin(
     """
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    # Also create supplement and dietary directories
+    supplement_dir = output_dir.parent / "supplements"
+    supplement_dir.mkdir(parents=True, exist_ok=True)
+    dietary_dir = output_dir.parent / "dietary"
+    dietary_dir.mkdir(parents=True, exist_ok=True)
+
+    # Collect all existing IDs across all directories
     existing_ids = set()
     if skip_existing:
-        for f in output_dir.glob("*.yaml"):
-            existing_ids.add(f.stem)
-        for f in output_dir.glob("*.yml"):
-            existing_ids.add(f.stem)
+        for search_dir in [output_dir, supplement_dir, dietary_dir]:
+            for f in search_dir.glob("*.yaml"):
+                existing_ids.add(f.stem)
+            for f in search_dir.glob("*.yml"):
+                existing_ids.add(f.stem)
 
     count = 0
+
+    # Process drugs
     for name, category, cyp_pairs, synonyms in BUILTIN_DRUGS:
         substance_id = normalize_id(name)
         if substance_id in existing_ids:
@@ -515,6 +701,40 @@ def import_builtin(
         )
 
         write_yaml(profile, output_dir)
+        count += 1
+
+    # Process supplements and dietary factors
+    for item in BUILTIN_SUPPLEMENTS:
+        name, sub_type, category, cyp_pairs, synonyms, serotonin_load = item
+        substance_id = normalize_id(name)
+        if substance_id in existing_ids:
+            continue
+
+        cyp_entries = []
+        seen = set()
+        for enzyme, role in cyp_pairs:
+            if (enzyme, role) not in seen:
+                cyp_entries.append({
+                    'enzyme': enzyme,
+                    'role': role,
+                    'significance': 'major',
+                    'evidence': 'established',
+                })
+                seen.add((enzyme, role))
+
+        profile = generate_tier2_yaml(
+            name=name,
+            cyp_entries=cyp_entries,
+            synonyms=synonyms,
+            category=category,
+        )
+
+        # Override type and serotonin load for supplements/dietary
+        profile['substance']['type'] = sub_type
+        profile['substance']['safety']['serotonin_load'] = serotonin_load
+
+        target_dir = dietary_dir if sub_type == "dietary" else supplement_dir
+        write_yaml(profile, target_dir)
         count += 1
 
     return count
