@@ -1,0 +1,125 @@
+# CBD (Cannabidiol)
+# Source: FDA (Epidiolex), PubMed, Harvard Health
+# Last reviewed: 2026-03-31
+
+substance:
+  id: cbd
+  name: "CBD (Cannabidiol)"
+  type: supplement
+  category: cannabinoid
+  common_names:
+    - CBD
+    - Cannabidiol
+    - CBD Oil
+    - Hemp Extract
+
+  pharmacokinetics:
+    formulations:
+      - name: oil
+        label: "Sublingual Oil/Tincture"
+        absorption_minutes: 15
+        peak_plasma_hours: 2.5
+        half_life_hours: 24
+        duration_hours: 8
+      - name: capsule
+        label: "Oral Capsule"
+        absorption_minutes: 60
+        peak_plasma_hours: 3.5
+        half_life_hours: 24
+        duration_hours: 8
+    food_effect: "Dramatically better absorbed with high-fat food (up to 4x increase)"
+
+  metabolism:
+    cyp450:
+      - enzyme: CYP3A4
+        role: substrate
+        significance: major
+        evidence: established
+      - enzyme: CYP2C19
+        role: substrate
+        significance: major
+        evidence: established
+      - enzyme: CYP3A4
+        role: inhibitor
+        significance: moderate
+        evidence: established
+      - enzyme: CYP2C19
+        role: inhibitor
+        significance: moderate
+        evidence: established
+      - enzyme: CYP2D6
+        role: inhibitor
+        significance: minor
+        evidence: probable
+      - enzyme: CYP1A2
+        role: inhibitor
+        significance: minor
+        evidence: probable
+    renal_excretion: false
+    notes: "CBD is a significant CYP inhibitor across multiple enzymes. It can raise blood levels of many prescription medications including SSRIs, benzodiazepines, and statins. This is the primary safety concern with CBD."
+
+  receptor_activity:
+    - system: serotonergic
+      mechanism: "Partial agonist at 5-HT1A receptors; may contribute to anxiolytic effects"
+      direction: modulate
+      magnitude: mild
+    - system: endocannabinoid
+      mechanism: "Inhibits FAAH (fatty acid amide hydrolase), increasing endogenous anandamide levels"
+      direction: increase
+      magnitude: moderate
+    - system: gabaergic
+      mechanism: "Positive allosteric modulator at GABA-A receptors at higher doses"
+      direction: increase
+      magnitude: mild
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+
+  oxidative_profile:
+    generates_ros: false
+    mechanism: "Antioxidant and neuroprotective properties documented"
+    evidence: "Established (in-vitro); probable (human)"
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: evening
+    take_with_food: required
+    notes: "Take with a high-fat meal for absorption. Evening use is common for sleep/anxiety. WARNING: CBD inhibits multiple CYP450 enzymes and can significantly alter blood levels of prescription medications."
+
+  safety:
+    serotonin_load: 0.15
+    cardiovascular_flag: false
+    appetite_suppression: true
+    sleep_disruption: false
+    common_doses:
+      - dose_mg: 25
+        frequency: "once daily"
+        evidence: "Low starting dose"
+      - dose_mg: 50
+        frequency: "once or twice daily"
+        evidence: "Common consumer dose"
+    side_effects:
+      - "Drowsiness/fatigue"
+      - "Diarrhea"
+      - "Changes in appetite"
+      - "Potential liver enzyme elevation at high doses"
+      - "Drug interactions via CYP450 inhibition"
+    contraindications:
+      - "Caution with ALL CYP3A4 substrates (raises their levels)"
+      - "Caution with ALL CYP2C19 substrates including escitalopram, omeprazole, clopidogrel"
+      - "Caution with blood thinners (warfarin levels may increase)"
+      - "Liver disease"
+      - "Unregulated market — dosing accuracy varies widely between products"
+
+  metadata:
+    data_sources:
+      - "FDA: Epidiolex Prescribing Information"
+      - "Harvard Health: CBD and medications"
+      - "PubMed PMID:31698946 (CBD-drug interactions review)"
+      - "PubMed PMID:37162192 (CBD vs melatonin for sleep RCT)"
+    last_reviewed: "2026-03-31"
+    review_status: curated

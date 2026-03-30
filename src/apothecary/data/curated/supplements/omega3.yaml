@@ -1,0 +1,104 @@
+# Omega-3 Fish Oil (EPA/DHA)
+# Source: PubMed, FDA, Examine.com
+# Last reviewed: 2026-03-30
+
+substance:
+  id: omega3
+  name: "Omega-3 Fish Oil (EPA/DHA)"
+  type: supplement
+  category: fatty_acid
+  common_names:
+    - Omega-3
+    - Fish Oil
+    - EPA/DHA
+    - DHA
+    - EPA
+    - Nordic Naturals
+    - Sports Research Omega-3
+
+  pharmacokinetics:
+    formulations:
+      - name: softgel
+        label: "Triglyceride Form Softgel"
+        absorption_minutes: 60
+        peak_plasma_hours: 5
+        half_life_hours: 48
+        duration_hours: 72
+    food_effect: "Significantly better absorbed with a meal containing fat"
+    ph_sensitivity: null
+
+  metabolism:
+    cyp450: []
+    renal_excretion: false
+    ph_dependent: false
+    notes: "Metabolized via beta-oxidation and incorporated into cell membranes. Long tissue half-life — takes weeks to reach steady state."
+
+  receptor_activity:
+    - system: serotonergic
+      mechanism: "DHA increases serotonin receptor sensitivity and may enhance serotonin release via membrane fluidity changes"
+      direction: modulate
+      magnitude: mild
+    - system: dopaminergic
+      mechanism: "DHA modulates dopamine receptor density and sensitivity via neuronal membrane incorporation"
+      direction: modulate
+      magnitude: mild
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+    provides:
+      - nutrient: epa
+        mechanism: "Directly provides eicosapentaenoic acid, an anti-inflammatory omega-3 fatty acid"
+        evidence: established
+      - nutrient: dha
+        mechanism: "Directly provides docosahexaenoic acid, a structural component of neuronal membranes"
+        evidence: established
+
+  oxidative_profile:
+    generates_ros: false
+    mechanism: "Anti-inflammatory — EPA/DHA reduce neuroinflammation via resolvins and protectins; DHA incorporation into membranes improves fluidity and receptor function"
+    mitochondrial_impact: "DHA supports mitochondrial membrane integrity"
+    neuroinflammation: "Reduces pro-inflammatory cytokines (TNF-alpha, IL-6); promotes resolution of inflammation"
+    evidence: "Established (anti-inflammatory); established (membrane incorporation)"
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: morning
+    take_with_food: required
+    latest_recommended: null
+    spacing_requirements: []
+    notes: "Take with a meal containing fat for optimal absorption. Morning with breakfast is most common. Timing is not critical for efficacy since tissue incorporation takes weeks — consistency matters more than timing."
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    appetite_suppression: false
+    sleep_disruption: false
+    common_doses:
+      - dose_mg: 1000
+        frequency: "once daily (combined EPA+DHA)"
+        evidence: "General health recommendation"
+      - dose_mg: 1400
+        frequency: "once daily (combined EPA+DHA)"
+        evidence: "Therapeutic range for anti-inflammatory benefits"
+      - dose_mg: 2000
+        frequency: "once daily (combined EPA+DHA)"
+        evidence: "Upper therapeutic range; used in mood and inflammation studies"
+    side_effects:
+      - "Fishy burps (reduced with triglyceride form and quality brands)"
+      - "Mild GI discomfort"
+      - "May increase bleeding time at very high doses (>3g/day)"
+    contraindications:
+      - "Fish/shellfish allergy (depending on source)"
+      - "Caution with anticoagulants at doses >2g/day (additive bleeding risk)"
+
+  metadata:
+    data_sources:
+      - "PubMed PMID:21939614 (Omega-3 and neuroinflammation)"
+      - "PubMed PMID:15867048 (DHA and neuronal membrane function)"
+      - "Examine.com: Fish Oil monograph"
+    last_reviewed: "2026-03-30"
+    review_status: curated

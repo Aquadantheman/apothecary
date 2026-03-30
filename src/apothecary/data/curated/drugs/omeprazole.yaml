@@ -1,0 +1,97 @@
+# Omeprazole (Prilosec)
+# Source: FDA prescribing information, DrugBank DB00338
+# Last reviewed: 2026-03-31
+
+substance:
+  id: omeprazole
+  name: "Omeprazole (Prilosec)"
+  type: prescription
+  category: ppi
+  common_names:
+    - Prilosec
+    - omeprazole
+    - Prilosec OTC
+
+  pharmacokinetics:
+    formulations:
+      - name: capsule
+        label: "Delayed-Release Capsule"
+        absorption_minutes: 30
+        peak_plasma_hours: 2
+        half_life_hours: 1
+        duration_hours: 24
+    food_effect: "Take 30-60 minutes before a meal for maximum efficacy"
+
+  metabolism:
+    cyp450:
+      - enzyme: CYP2C19
+        role: substrate
+        significance: major
+        evidence: established
+      - enzyme: CYP3A4
+        role: substrate
+        significance: minor
+        evidence: established
+      - enzyme: CYP2C19
+        role: inhibitor
+        significance: moderate
+        evidence: established
+    renal_excretion: true
+    ph_dependent: false
+    notes: "CYP2C19 polymorphisms significantly affect omeprazole metabolism. Poor metabolizers have higher drug levels."
+
+  receptor_activity: []
+
+  nutrient_effects:
+    depletions:
+      - nutrient: magnesium
+        mechanism: "Long-term PPI use reduces intestinal magnesium absorption via TRPM6/7 channel downregulation"
+        evidence: established
+        clinical_significance: high
+      - nutrient: vitamin_b12
+        mechanism: "Reduced gastric acid impairs B12 release from food proteins"
+        evidence: established
+        clinical_significance: moderate
+      - nutrient: calcium
+        mechanism: "Reduced gastric acid impairs calcium absorption, particularly calcium carbonate"
+        evidence: established
+        clinical_significance: moderate
+      - nutrient: iron
+        mechanism: "Reduced gastric acid impairs non-heme iron absorption"
+        evidence: established
+        clinical_significance: moderate
+    requirements: []
+
+  oxidative_profile:
+    generates_ros: false
+
+  absorption:
+    enhancers: []
+    inhibitors:
+      - substance_id: stimulant
+        mechanism: "By raising gastric pH, PPIs may increase amphetamine absorption (alkaline environment favors amphetamine absorption)"
+        net_effect: increases_effect
+        timing_note: "Monitor for increased stimulant effects if starting a PPI"
+
+  timing:
+    optimal_window: morning
+    take_with_food: empty_stomach
+    notes: "Take 30-60 minutes BEFORE breakfast. The proton pump must be actively secreting acid for omeprazole to bind it."
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    appetite_suppression: false
+    sleep_disruption: false
+    contraindications:
+      - "Rilpivirine (reduced absorption)"
+      - "Long-term use increases fracture risk"
+      - "May reduce clopidogrel efficacy (CYP2C19 competition)"
+
+  metadata:
+    data_sources:
+      - "FDA: Prilosec Prescribing Information"
+      - "DrugBank: DB00338"
+      - "PubMed PMID:26243719 (PPI and nutrient depletions)"
+    last_reviewed: "2026-03-31"
+    review_status: curated

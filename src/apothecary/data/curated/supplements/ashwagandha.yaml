@@ -1,0 +1,98 @@
+# Ashwagandha (Withania somnifera)
+# Source: PubMed, Examine.com
+# Last reviewed: 2026-03-31
+
+substance:
+  id: ashwagandha
+  name: "Ashwagandha (Withania somnifera)"
+  type: supplement
+  category: adaptogen
+  common_names:
+    - Ashwagandha
+    - KSM-66
+    - Sensoril
+    - Shoden
+    - Withania somnifera
+    - Indian Ginseng
+
+  pharmacokinetics:
+    formulations:
+      - name: capsule
+        label: "Oral Capsule (root extract)"
+        absorption_minutes: 60
+        peak_plasma_hours: 3
+        half_life_hours: 6
+        duration_hours: 12
+    food_effect: "Can be taken with or without food; some extracts recommend with food"
+
+  metabolism:
+    cyp450:
+      - enzyme: CYP3A4
+        role: inhibitor
+        significance: minor
+        evidence: possible
+      - enzyme: CYP2D6
+        role: inhibitor
+        significance: minor
+        evidence: possible
+    renal_excretion: true
+    notes: "CYP inhibition is mild and based on in-vitro data; clinical significance at typical supplement doses is uncertain."
+
+  receptor_activity:
+    - system: gabaergic
+      mechanism: "Withanolides and withanine have GABAmimetic activity, binding GABA-A receptors"
+      direction: increase
+      magnitude: mild
+    - system: serotonergic
+      mechanism: "May modulate serotonin receptor sensitivity and cortisol-mediated serotonin changes"
+      direction: modulate
+      magnitude: mild
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+    provides: []
+
+  oxidative_profile:
+    generates_ros: false
+    mechanism: "Antioxidant — withanolides scavenge free radicals"
+    evidence: "Established (in-vitro); probable (human)"
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: evening
+    take_with_food: recommended
+    notes: "Often taken in the evening due to calming/anxiolytic effects. Some people prefer morning for stress-buffering throughout the day. KSM-66 and Sensoril are the most studied extracts."
+
+  safety:
+    serotonin_load: 0.1
+    cardiovascular_flag: false
+    appetite_suppression: false
+    sleep_disruption: false
+    common_doses:
+      - dose_mg: 300
+        frequency: "once or twice daily (KSM-66 extract)"
+        evidence: "Most common in clinical studies"
+      - dose_mg: 600
+        frequency: "once daily"
+        evidence: "Higher end of studied range"
+    side_effects:
+      - "GI discomfort (uncommon)"
+      - "Drowsiness at higher doses"
+      - "May increase thyroid hormone levels"
+    contraindications:
+      - "Thyroid disorders (may increase T3/T4 — monitor closely)"
+      - "Autoimmune conditions (may stimulate immune system)"
+      - "Pregnancy (traditionally considered abortifacient)"
+      - "Use caution with SSRIs/SNRIs (additive serotonergic effects, though typically mild)"
+
+  metadata:
+    data_sources:
+      - "PubMed PMID:23439798 (Ashwagandha cortisol reduction RCT)"
+      - "PubMed PMID:32021735 (KSM-66 sleep quality study)"
+      - "Examine.com: Ashwagandha monograph"
+    last_reviewed: "2026-03-31"
+    review_status: curated

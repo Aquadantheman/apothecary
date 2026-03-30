@@ -1,0 +1,106 @@
+# St. John's Wort (Hypericum perforatum)
+# Source: FDA warnings, PubMed, MSKCC
+# Last reviewed: 2026-03-31
+
+substance:
+  id: st_johns_wort
+  name: "St. John's Wort (Hypericum perforatum)"
+  type: supplement
+  category: herbal
+  common_names:
+    - St. John's Wort
+    - Hypericum
+    - Hypericum perforatum
+    - SJW
+
+  pharmacokinetics:
+    formulations:
+      - name: capsule
+        label: "Oral Capsule/Tablet"
+        absorption_minutes: 60
+        peak_plasma_hours: 5
+        half_life_hours: 24
+        duration_hours: 24
+    food_effect: "Can be taken with or without food"
+
+  metabolism:
+    cyp450:
+      - enzyme: CYP3A4
+        role: inducer
+        significance: major
+        evidence: established
+      - enzyme: CYP2C9
+        role: inducer
+        significance: major
+        evidence: established
+      - enzyme: CYP2C19
+        role: inducer
+        significance: moderate
+        evidence: established
+      - enzyme: CYP1A2
+        role: inducer
+        significance: minor
+        evidence: established
+    renal_excretion: true
+    notes: "One of the most problematic supplements for drug interactions. Potent CYP3A4 inducer — reduces blood levels of ~50% of all prescription drugs. Also induces P-glycoprotein. FDA has issued multiple warnings."
+
+  receptor_activity:
+    - system: serotonergic
+      mechanism: "Inhibits serotonin, norepinephrine, and dopamine reuptake. Hypericin and hyperforin are active compounds."
+      direction: increase
+      magnitude: moderate
+    - system: dopaminergic
+      mechanism: "Inhibits dopamine reuptake"
+      direction: increase
+      magnitude: mild
+    - system: noradrenergic
+      mechanism: "Inhibits norepinephrine reuptake"
+      direction: increase
+      magnitude: mild
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+
+  oxidative_profile:
+    generates_ros: false
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: morning
+    take_with_food: either
+    notes: "WARNING: St. John's Wort is one of the most interaction-prone supplements available. It reduces the effectiveness of birth control pills, HIV medications, blood thinners, immunosuppressants, many antidepressants, and dozens of other drugs."
+
+  safety:
+    serotonin_load: 0.5
+    cardiovascular_flag: false
+    appetite_suppression: false
+    sleep_disruption: false
+    side_effects:
+      - "Photosensitivity (increased sunburn risk)"
+      - "GI discomfort"
+      - "Anxiety, dry mouth"
+      - "Dizziness"
+    contraindications:
+      - "SSRIs (serotonin syndrome — CRITICAL)"
+      - "SNRIs (serotonin syndrome — CRITICAL)"
+      - "MAO inhibitors (serotonin syndrome — CRITICAL)"
+      - "Oral contraceptives (reduced efficacy — unplanned pregnancy risk)"
+      - "HIV protease inhibitors and NNRTIs (reduced efficacy — treatment failure)"
+      - "Warfarin (reduced efficacy — clotting risk)"
+      - "Cyclosporine and other immunosuppressants (organ rejection risk)"
+      - "Benzodiazepines (reduced efficacy)"
+      - "Statins (reduced efficacy)"
+      - "Essentially ANY CYP3A4 substrate — consult pharmacist"
+
+  metadata:
+    data_sources:
+      - "FDA: Risk of Drug Interactions with St. John's Wort"
+      - "PubMed PMID:10921462 (SJW CYP induction)"
+      - "PubMed PMID:12404710 (SJW drug interactions review)"
+      - "MSKCC About Herbs: St. John's Wort"
+    last_reviewed: "2026-03-31"
+    review_status: curated

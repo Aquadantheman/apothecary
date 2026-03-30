@@ -1,0 +1,83 @@
+# Venlafaxine (Effexor)
+# Source: FDA prescribing information, DrugBank DB00285
+# Last reviewed: 2026-03-31
+
+substance:
+  id: venlafaxine
+  name: "Venlafaxine (Effexor)"
+  type: prescription
+  category: snri
+  common_names:
+    - Effexor
+    - Effexor XR
+    - venlafaxine
+
+  pharmacokinetics:
+    formulations:
+      - name: XR
+        label: "Extended Release Capsule"
+        absorption_minutes: 60
+        peak_plasma_hours: 5.5
+        half_life_hours: 11
+        duration_hours: 24
+    food_effect: "Food delays absorption but does not affect total amount absorbed"
+
+  metabolism:
+    cyp450:
+      - enzyme: CYP2D6
+        role: substrate
+        significance: major
+        evidence: established
+      - enzyme: CYP3A4
+        role: substrate
+        significance: minor
+        evidence: established
+    renal_excretion: true
+    ph_dependent: false
+
+  receptor_activity:
+    - system: serotonergic
+      mechanism: "Inhibits SERT, increasing synaptic serotonin (primary effect at lower doses)"
+      direction: increase
+      magnitude: strong
+    - system: noradrenergic
+      mechanism: "Inhibits NET, increasing synaptic norepinephrine (becomes significant at doses >150mg)"
+      direction: increase
+      magnitude: moderate
+
+  nutrient_effects:
+    depletions:
+      - nutrient: sodium
+        mechanism: "SIADH-mediated hyponatremia"
+        evidence: established
+        clinical_significance: low
+    requirements: []
+
+  oxidative_profile:
+    generates_ros: false
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: morning
+    take_with_food: recommended
+    notes: "MUST NOT be stopped abruptly — requires slow taper over weeks to avoid severe discontinuation syndrome (brain zaps, dizziness, nausea, irritability)."
+
+  safety:
+    serotonin_load: 0.75
+    cardiovascular_flag: true
+    appetite_suppression: false
+    sleep_disruption: true
+    contraindications:
+      - "MAO inhibitors (serotonin syndrome — CRITICAL)"
+      - "Concurrent 5-HTP or tryptophan supplements"
+      - "Uncontrolled hypertension (can raise BP at higher doses)"
+
+  metadata:
+    data_sources:
+      - "FDA: Effexor XR Prescribing Information"
+      - "DrugBank: DB00285"
+    last_reviewed: "2026-03-31"
+    review_status: curated

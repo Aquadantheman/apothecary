@@ -1,0 +1,98 @@
+# Methylphenidate (Ritalin/Concerta)
+# Source: FDA prescribing information, DrugBank DB00422
+# Last reviewed: 2026-03-31
+
+substance:
+  id: methylphenidate
+  name: "Methylphenidate (Ritalin/Concerta)"
+  type: prescription
+  category: stimulant
+  common_names:
+    - Ritalin
+    - Concerta
+    - methylphenidate
+    - Ritalin LA
+    - Focalin
+    - Daytrana
+
+  pharmacokinetics:
+    formulations:
+      - name: IR
+        label: "Immediate Release (Ritalin)"
+        absorption_minutes: 30
+        peak_plasma_hours: 2
+        half_life_hours: 3.5
+        duration_hours: 4
+      - name: XR
+        label: "Extended Release (Concerta)"
+        absorption_minutes: 60
+        peak_plasma_hours: 6
+        half_life_hours: 3.5
+        duration_hours: 12
+    food_effect: "May be taken with or without food"
+
+  metabolism:
+    cyp450: []
+    renal_excretion: true
+    ph_dependent: false
+    notes: "Unlike amphetamines, methylphenidate is primarily metabolized by carboxylesterase CES1 (de-esterification), NOT CYP450 enzymes. This means fewer CYP-mediated drug interactions."
+
+  receptor_activity:
+    - system: dopaminergic
+      mechanism: "Blocks dopamine reuptake transporter (DAT), increasing synaptic dopamine. Unlike amphetamine, does NOT reverse the transporter or promote release."
+      direction: increase
+      magnitude: moderate
+    - system: noradrenergic
+      mechanism: "Blocks norepinephrine reuptake transporter (NET), increasing synaptic norepinephrine"
+      direction: increase
+      magnitude: moderate
+
+  nutrient_effects:
+    depletions:
+      - nutrient: magnesium
+        mechanism: "Increased urinary excretion (similar to amphetamines but less studied)"
+        evidence: possible
+        clinical_significance: moderate
+    requirements:
+      - nutrient: tyrosine
+        mechanism: "Precursor for dopamine synthesis"
+        evidence: established
+
+  oxidative_profile:
+    generates_ros: true
+    mechanism: "Dopamine accumulation in synapse undergoes auto-oxidation; less direct ROS generation than amphetamine since methylphenidate blocks reuptake rather than reversing the transporter"
+    mitochondrial_impact: "Less mitochondrial toxicity than amphetamines based on mechanism"
+    evidence: "Possible — less studied than amphetamine neurotoxicity"
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: morning
+    take_with_food: either
+    latest_recommended:
+      IR: "14:00"
+      XR: "10:00"
+    spacing_requirements:
+      - substance_tag: magnesium
+        rule: separate_8h
+        reason: "Potential absorption interference"
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: true
+    appetite_suppression: true
+    sleep_disruption: true
+    contraindications:
+      - "MAO inhibitors (hypertensive crisis)"
+      - "Severe anxiety, tension, agitation"
+      - "Glaucoma"
+      - "Motor tics or Tourette's syndrome (relative)"
+
+  metadata:
+    data_sources:
+      - "FDA: Concerta Prescribing Information"
+      - "DrugBank: DB00422"
+    last_reviewed: "2026-03-31"
+    review_status: curated

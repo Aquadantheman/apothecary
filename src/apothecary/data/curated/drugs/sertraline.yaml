@@ -1,0 +1,101 @@
+# Sertraline (Zoloft)
+# Source: FDA prescribing information, DrugBank DB01104
+# Last reviewed: 2026-03-31
+
+substance:
+  id: sertraline
+  name: "Sertraline (Zoloft)"
+  type: prescription
+  category: ssri
+  common_names:
+    - Zoloft
+    - sertraline
+    - sertraline HCl
+
+  pharmacokinetics:
+    formulations:
+      - name: tablet
+        label: "Oral Tablet"
+        absorption_minutes: 60
+        peak_plasma_hours: 6
+        half_life_hours: 26
+        duration_hours: 24
+    food_effect: "Food increases bioavailability; take with food"
+    ph_sensitivity: null
+
+  metabolism:
+    cyp450:
+      - enzyme: CYP2B6
+        role: substrate
+        significance: major
+        evidence: established
+      - enzyme: CYP2C19
+        role: substrate
+        significance: minor
+        evidence: established
+      - enzyme: CYP3A4
+        role: substrate
+        significance: minor
+        evidence: established
+      - enzyme: CYP2D6
+        role: inhibitor
+        significance: moderate
+        evidence: established
+      - enzyme: CYP2C19
+        role: inhibitor
+        significance: minor
+        evidence: established
+    renal_excretion: true
+    ph_dependent: false
+
+  receptor_activity:
+    - system: serotonergic
+      mechanism: "Selectively inhibits serotonin reuptake transporter (SERT), increasing synaptic serotonin"
+      direction: increase
+      magnitude: strong
+    - system: dopaminergic
+      mechanism: "Weak dopamine reuptake inhibition at higher doses"
+      direction: increase
+      magnitude: mild
+
+  nutrient_effects:
+    depletions:
+      - nutrient: sodium
+        mechanism: "SIADH-mediated hyponatremia (rare)"
+        evidence: established
+        clinical_significance: low
+      - nutrient: folate
+        mechanism: "May impair folate metabolism"
+        evidence: possible
+        clinical_significance: low
+    requirements: []
+
+  oxidative_profile:
+    generates_ros: false
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: morning
+    take_with_food: recommended
+
+  safety:
+    serotonin_load: 0.7
+    cardiovascular_flag: false
+    appetite_suppression: false
+    sleep_disruption: false
+    emotional_blunting: true
+    contraindications:
+      - "MAO inhibitors (serotonin syndrome — CRITICAL)"
+      - "Pimozide"
+      - "Concurrent 5-HTP or tryptophan supplements"
+      - "Disulfiram (oral concentrate contains alcohol)"
+
+  metadata:
+    data_sources:
+      - "FDA: Zoloft Prescribing Information"
+      - "DrugBank: DB01104"
+    last_reviewed: "2026-03-31"
+    review_status: curated

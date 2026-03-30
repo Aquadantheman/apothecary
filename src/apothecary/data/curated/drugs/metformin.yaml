@@ -1,0 +1,88 @@
+# Metformin (Glucophage)
+# Source: FDA prescribing information, DrugBank DB00331
+# Last reviewed: 2026-03-31
+
+substance:
+  id: metformin
+  name: "Metformin (Glucophage)"
+  type: prescription
+  category: biguanide
+  common_names:
+    - Metformin
+    - Glucophage
+    - Glucophage XR
+
+  pharmacokinetics:
+    formulations:
+      - name: IR
+        label: "Immediate Release"
+        absorption_minutes: 60
+        peak_plasma_hours: 2.5
+        half_life_hours: 6
+        duration_hours: 12
+      - name: XR
+        label: "Extended Release"
+        absorption_minutes: 120
+        peak_plasma_hours: 7
+        half_life_hours: 6
+        duration_hours: 24
+    food_effect: "Take with food to reduce GI side effects"
+
+  metabolism:
+    cyp450: []
+    renal_excretion: true
+    ph_dependent: false
+    notes: "Not metabolized by CYP450. Excreted unchanged by kidneys. Minimal drug interactions via CYP pathway."
+
+  receptor_activity: []
+
+  nutrient_effects:
+    depletions:
+      - nutrient: vitamin_b12
+        mechanism: "Reduces vitamin B12 absorption in the ileum by interfering with calcium-dependent B12-intrinsic factor uptake"
+        evidence: established
+        clinical_significance: high
+      - nutrient: folate
+        mechanism: "May reduce folate levels via similar absorption interference"
+        evidence: probable
+        clinical_significance: moderate
+      - nutrient: coq10
+        mechanism: "May reduce CoQ10 levels"
+        evidence: possible
+        clinical_significance: low
+    requirements: []
+
+  oxidative_profile:
+    generates_ros: false
+    mechanism: "Generally considered anti-inflammatory and may reduce oxidative stress"
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: evening
+    take_with_food: required
+    notes: "Take with meals to minimize GI side effects (nausea, diarrhea). XR formulation is typically taken with dinner."
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    appetite_suppression: true
+    sleep_disruption: false
+    side_effects:
+      - "GI distress (nausea, diarrhea, cramping) — common, usually improves over time"
+      - "Metallic taste"
+      - "B12 deficiency with long-term use"
+    contraindications:
+      - "Severe renal impairment (eGFR <30)"
+      - "Metabolic acidosis including diabetic ketoacidosis"
+      - "Hold before contrast dye procedures (lactic acidosis risk)"
+
+  metadata:
+    data_sources:
+      - "FDA: Glucophage Prescribing Information"
+      - "DrugBank: DB00331"
+      - "PubMed PMID:26900641 (Metformin and B12 deficiency)"
+    last_reviewed: "2026-03-31"
+    review_status: curated

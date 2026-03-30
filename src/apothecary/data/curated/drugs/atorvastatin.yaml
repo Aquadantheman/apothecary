@@ -1,0 +1,71 @@
+# Atorvastatin (Lipitor)
+# Source: FDA prescribing information, DrugBank DB01076
+# Last reviewed: 2026-03-31
+
+substance:
+  id: atorvastatin
+  name: "Atorvastatin (Lipitor)"
+  type: prescription
+  category: statin
+  common_names:
+    - Lipitor
+    - atorvastatin
+
+  pharmacokinetics:
+    formulations:
+      - name: tablet
+        label: "Oral Tablet"
+        absorption_minutes: 60
+        peak_plasma_hours: 2
+        half_life_hours: 14
+        duration_hours: 24
+    food_effect: "Food decreases rate but not extent of absorption; can be taken with or without food"
+
+  metabolism:
+    cyp450:
+      - enzyme: CYP3A4
+        role: substrate
+        significance: major
+        evidence: established
+    renal_excretion: false
+    ph_dependent: false
+    notes: "CYP3A4 inhibitors (grapefruit, ketoconazole, clarithromycin) significantly increase atorvastatin levels and risk of rhabdomyolysis."
+
+  receptor_activity: []
+
+  nutrient_effects:
+    depletions:
+      - nutrient: coq10
+        mechanism: "Statins block the mevalonate pathway, which is shared by CoQ10 synthesis. Chronic use reduces CoQ10 levels."
+        evidence: established
+        clinical_significance: moderate
+    requirements: []
+
+  oxidative_profile:
+    generates_ros: false
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: evening
+    take_with_food: either
+    notes: "Evening dosing traditionally recommended since cholesterol synthesis peaks at night, though atorvastatin's long half-life makes timing less critical than with short-acting statins."
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    appetite_suppression: false
+    sleep_disruption: false
+    contraindications:
+      - "Active liver disease or unexplained persistent elevations in transaminases"
+      - "Pregnancy and lactation (CRITICAL)"
+      - "Concurrent strong CYP3A4 inhibitors at high statin doses"
+
+  metadata:
+    data_sources:
+      - "FDA: Lipitor Prescribing Information"
+      - "DrugBank: DB01076"
+    last_reviewed: "2026-03-31"
+    review_status: curated

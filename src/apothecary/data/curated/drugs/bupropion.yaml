@@ -1,0 +1,96 @@
+# Bupropion (Wellbutrin)
+# Source: FDA prescribing information, DrugBank DB01156
+# Last reviewed: 2026-03-31
+
+substance:
+  id: bupropion
+  name: "Bupropion (Wellbutrin)"
+  type: prescription
+  category: ndri
+  common_names:
+    - Wellbutrin
+    - Wellbutrin XL
+    - Wellbutrin SR
+    - bupropion
+    - Zyban
+
+  pharmacokinetics:
+    formulations:
+      - name: IR
+        label: "Immediate Release"
+        absorption_minutes: 60
+        peak_plasma_hours: 2
+        half_life_hours: 21
+        duration_hours: 12
+      - name: SR
+        label: "Sustained Release"
+        absorption_minutes: 60
+        peak_plasma_hours: 3
+        half_life_hours: 21
+        duration_hours: 12
+      - name: XL
+        label: "Extended Release"
+        absorption_minutes: 60
+        peak_plasma_hours: 5
+        half_life_hours: 21
+        duration_hours: 24
+    food_effect: "Food does not significantly affect absorption"
+
+  metabolism:
+    cyp450:
+      - enzyme: CYP2B6
+        role: substrate
+        significance: major
+        evidence: established
+      - enzyme: CYP2D6
+        role: inhibitor
+        significance: major
+        evidence: established
+    renal_excretion: true
+    ph_dependent: false
+    notes: "Strong CYP2D6 inhibitor — will raise levels of CYP2D6 substrates including amphetamines, many SSRIs, and codeine (blocks conversion to morphine)."
+
+  receptor_activity:
+    - system: dopaminergic
+      mechanism: "Inhibits dopamine reuptake transporter (DAT), increasing synaptic dopamine"
+      direction: increase
+      magnitude: moderate
+    - system: noradrenergic
+      mechanism: "Inhibits norepinephrine reuptake transporter (NET), increasing synaptic norepinephrine"
+      direction: increase
+      magnitude: moderate
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+
+  oxidative_profile:
+    generates_ros: false
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: morning
+    take_with_food: either
+    notes: "Take in morning to avoid insomnia. XL formulation is once daily. Do not crush or chew extended-release tablets — risk of seizure from dose dumping."
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: true
+    appetite_suppression: true
+    sleep_disruption: true
+    contraindications:
+      - "Seizure disorders (lowers seizure threshold)"
+      - "Eating disorders (bulimia/anorexia — increased seizure risk)"
+      - "MAO inhibitors"
+      - "Abrupt discontinuation of alcohol or sedatives"
+      - "Concurrent use of other bupropion products"
+
+  metadata:
+    data_sources:
+      - "FDA: Wellbutrin XL Prescribing Information"
+      - "DrugBank: DB01156"
+    last_reviewed: "2026-03-31"
+    review_status: curated

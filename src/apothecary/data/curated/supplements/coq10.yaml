@@ -1,0 +1,83 @@
+# CoQ10 (Coenzyme Q10 / Ubiquinol)
+# Source: PubMed, Examine.com
+# Last reviewed: 2026-03-31
+
+substance:
+  id: coq10
+  name: "CoQ10 (Coenzyme Q10)"
+  type: supplement
+  category: antioxidant
+  common_names:
+    - CoQ10
+    - Coenzyme Q10
+    - Ubiquinone
+    - Ubiquinol
+    - Q10
+
+  pharmacokinetics:
+    formulations:
+      - name: softgel
+        label: "Oral Softgel (ubiquinol preferred)"
+        absorption_minutes: 120
+        peak_plasma_hours: 6
+        half_life_hours: 33
+        duration_hours: 24
+    food_effect: "Significantly better absorbed with dietary fat"
+
+  metabolism:
+    cyp450: []
+    renal_excretion: false
+    notes: "Fat-soluble; incorporated into lipoproteins for transport. Ubiquinol form is better absorbed than ubiquinone."
+
+  receptor_activity:
+    - system: antioxidant
+      mechanism: "Essential component of mitochondrial electron transport chain (Complex III); also functions as a lipid-soluble antioxidant protecting cell membranes"
+      direction: increase
+      magnitude: moderate
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+    provides:
+      - nutrient: coq10
+        mechanism: "Directly replenishes CoQ10 levels, particularly important when depleted by statins"
+        evidence: established
+
+  oxidative_profile:
+    generates_ros: false
+    mechanism: "Antioxidant — protects mitochondrial membranes and LDL from oxidation"
+    mitochondrial_impact: "Directly supports electron transport chain; essential for ATP production"
+    evidence: "Established"
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: morning
+    take_with_food: required
+    notes: "Take with a meal containing fat. Morning preferred as CoQ10 can be mildly energizing. Ubiquinol form recommended for adults over 40 (better absorbed)."
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    common_doses:
+      - dose_mg: 100
+        frequency: "once daily"
+        evidence: "General supplementation"
+      - dose_mg: 200
+        frequency: "once daily"
+        evidence: "Common for statin users"
+      - dose_mg: 300
+        frequency: "once daily"
+        evidence: "Therapeutic range for heart failure studies"
+    contraindications:
+      - "May reduce warfarin efficacy (structurally similar to vitamin K)"
+      - "May lower blood pressure (additive with antihypertensives)"
+
+  metadata:
+    data_sources:
+      - "PubMed PMID:28969442 (CoQ10 and statin myopathy)"
+      - "Examine.com: CoQ10 monograph"
+    last_reviewed: "2026-03-31"
+    review_status: curated

@@ -1,0 +1,113 @@
+# Caffeine
+# Source: FDA, PubMed, DrugBank
+# Last reviewed: 2026-03-30
+
+substance:
+  id: caffeine
+  name: "Caffeine"
+  type: dietary
+  category: stimulant
+  common_names:
+    - Caffeine
+    - Coffee
+    - Tea
+    - Espresso
+
+  pharmacokinetics:
+    formulations:
+      - name: beverage
+        label: "Coffee/Tea"
+        absorption_minutes: 15
+        peak_plasma_hours: 0.75
+        half_life_hours: 5
+        duration_hours: 8
+    food_effect: "Food may slightly delay absorption but does not reduce it"
+    ph_sensitivity: null
+
+  metabolism:
+    cyp450:
+      - enzyme: CYP1A2
+        role: substrate
+        significance: major
+        evidence: established
+    renal_excretion: true
+    ph_dependent: false
+    notes: "Primarily metabolized by CYP1A2. Genetic polymorphisms in CYP1A2 significantly affect individual caffeine metabolism speed (fast vs slow metabolizers)."
+
+  receptor_activity:
+    - system: noradrenergic
+      mechanism: "Adenosine receptor antagonist; blocks adenosine-mediated inhibition, indirectly increasing norepinephrine release"
+      direction: increase
+      magnitude: moderate
+    - system: dopaminergic
+      mechanism: "Indirect dopamine increase via adenosine A2A receptor blockade in striatum"
+      direction: increase
+      magnitude: mild
+
+  nutrient_effects:
+    depletions:
+      - nutrient: magnesium
+        mechanism: "Increases urinary magnesium excretion"
+        evidence: probable
+        clinical_significance: low
+      - nutrient: iron
+        mechanism: "Polyphenols in coffee/tea inhibit non-heme iron absorption"
+        evidence: established
+        clinical_significance: moderate
+    requirements: []
+    provides: []
+
+  oxidative_profile:
+    generates_ros: false
+    mechanism: "Coffee contains antioxidants (chlorogenic acid); caffeine itself is neutral to mildly protective"
+    mitochondrial_impact: null
+    neuroinflammation: null
+    evidence: "Established (coffee antioxidants)"
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: morning
+    take_with_food: either
+    latest_recommended: "14:00"
+    spacing_requirements:
+      - substance_tag: stimulant
+        rule: caution
+        reason: "Additive noradrenergic and cardiovascular stimulation when combined with amphetamines. Limit caffeine on stimulant days, and cut off earlier (by 2-3 PM at latest)."
+      - substance_tag: iron
+        rule: separate_2h
+        reason: "Coffee/tea polyphenols reduce non-heme iron absorption"
+    notes: "On stimulant days, caffeine cutoff should be earlier (noon-2 PM) because both caffeine and stimulants increase norepinephrine and can compound sleep disruption."
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: true
+    appetite_suppression: true
+    sleep_disruption: true
+    common_doses:
+      - dose_mg: 95
+        frequency: "per 8oz coffee"
+        evidence: "Average brewed coffee"
+      - dose_mg: 200
+        frequency: "daily moderate intake"
+        evidence: "FDA generally recognized as safe up to 400mg/day"
+    side_effects:
+      - "Anxiety and jitteriness"
+      - "Insomnia"
+      - "Increased heart rate"
+      - "GI discomfort"
+      - "Dependence and withdrawal headaches"
+    contraindications:
+      - "Anxiety disorders (may exacerbate)"
+      - "Cardiac arrhythmias"
+      - "Pregnancy (limit to 200mg/day per ACOG)"
+
+  metadata:
+    data_sources:
+      - "FDA: Spilling the Beans on Caffeine"
+      - "DrugBank: DB00201"
+      - "PubMed PMID:28675917 (Caffeine and CYP1A2)"
+    last_reviewed: "2026-03-30"
+    review_status: curated

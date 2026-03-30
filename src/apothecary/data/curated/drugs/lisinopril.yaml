@@ -1,0 +1,72 @@
+# Lisinopril (Zestril/Prinivil)
+# Source: FDA prescribing information, DrugBank DB00722
+# Last reviewed: 2026-03-31
+
+substance:
+  id: lisinopril
+  name: "Lisinopril (Zestril)"
+  type: prescription
+  category: ace_inhibitor
+  common_names:
+    - Zestril
+    - Prinivil
+    - lisinopril
+
+  pharmacokinetics:
+    formulations:
+      - name: tablet
+        label: "Oral Tablet"
+        absorption_minutes: 60
+        peak_plasma_hours: 7
+        half_life_hours: 12
+        duration_hours: 24
+    food_effect: "Food does not affect absorption"
+
+  metabolism:
+    cyp450: []
+    renal_excretion: true
+    ph_dependent: false
+    notes: "Not metabolized — excreted unchanged by kidneys. No CYP450 interactions."
+
+  receptor_activity: []
+
+  nutrient_effects:
+    depletions:
+      - nutrient: zinc
+        mechanism: "ACE inhibitors increase urinary zinc excretion"
+        evidence: probable
+        clinical_significance: low
+    requirements: []
+
+  oxidative_profile:
+    generates_ros: false
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: morning
+    take_with_food: either
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    appetite_suppression: false
+    sleep_disruption: false
+    side_effects:
+      - "Dry cough (10-20% of patients — class effect)"
+      - "Hyperkalemia"
+      - "Dizziness from hypotension"
+    contraindications:
+      - "Pregnancy (CRITICAL — causes fetal harm)"
+      - "History of angioedema"
+      - "Concurrent use with aliskiren in diabetic patients"
+      - "Potassium supplements or potassium-sparing diuretics (hyperkalemia risk)"
+
+  metadata:
+    data_sources:
+      - "FDA: Zestril Prescribing Information"
+      - "DrugBank: DB00722"
+    last_reviewed: "2026-03-31"
+    review_status: curated

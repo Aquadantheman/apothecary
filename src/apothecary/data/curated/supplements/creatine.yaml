@@ -1,0 +1,86 @@
+# Creatine Monohydrate
+# Source: PubMed, ISSN Position Stand, Examine.com
+# Last reviewed: 2026-03-30
+
+substance:
+  id: creatine
+  name: "Creatine Monohydrate"
+  type: supplement
+  category: amino_acid_derivative
+  common_names:
+    - Creatine
+    - Creatine Monohydrate
+    - Creapure
+    - micronized creatine
+
+  pharmacokinetics:
+    formulations:
+      - name: powder
+        label: "Oral Powder"
+        absorption_minutes: 60
+        peak_plasma_hours: 1.5
+        half_life_hours: 3
+        duration_hours: 24
+    food_effect: "Absorption may be slightly enhanced with carbohydrates/insulin spike; generally effective regardless"
+    ph_sensitivity: null
+
+  metabolism:
+    cyp450: []
+    renal_excretion: true
+    ph_dependent: false
+    notes: "Not metabolized by CYP450. Stored as phosphocreatine in muscles and brain. Broken down to creatinine and excreted renally. Takes 3-4 weeks of daily dosing to saturate tissue stores."
+
+  receptor_activity: []
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+    provides:
+      - nutrient: phosphocreatine
+        mechanism: "Directly increases phosphocreatine stores in muscle and brain, supporting rapid ATP recycling during high-energy demand"
+        evidence: established
+
+  oxidative_profile:
+    generates_ros: false
+    mechanism: "Protective — supports mitochondrial energy production, reducing reliance on less efficient pathways that generate more ROS"
+    mitochondrial_impact: "Enhances mitochondrial ATP recycling via phosphocreatine shuttle; supports brain bioenergetics"
+    neuroinflammation: null
+    evidence: "Established (ATP recycling); probable (neuroprotective effects)"
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: morning
+    take_with_food: either
+    latest_recommended: null
+    spacing_requirements: []
+    notes: "Timing is not critical — creatine works via tissue saturation over weeks, not acute dosing. Morning for consistency is fine. Can be mixed into any beverage."
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    appetite_suppression: false
+    sleep_disruption: false
+    common_doses:
+      - dose_mg: 3000
+        frequency: "once daily"
+        evidence: "Minimum effective maintenance dose (ISSN)"
+      - dose_mg: 5000
+        frequency: "once daily"
+        evidence: "Standard maintenance dose; most commonly studied"
+    side_effects:
+      - "Water retention (mild, usually subsides)"
+      - "GI discomfort if taken without adequate water"
+      - "Weight gain (water, not fat)"
+    contraindications:
+      - "Pre-existing kidney disease (monitor creatinine levels)"
+
+  metadata:
+    data_sources:
+      - "PubMed PMID:28615996 (ISSN Position Stand on Creatine)"
+      - "PubMed PMID:29704637 (Creatine and cognitive function)"
+      - "Examine.com: Creatine monograph"
+    last_reviewed: "2026-03-30"
+    review_status: curated

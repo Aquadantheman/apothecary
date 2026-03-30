@@ -1,0 +1,94 @@
+# Escitalopram (Lexapro)
+# Source: FDA prescribing information, DrugBank DB01175
+# Last reviewed: 2026-03-30
+
+substance:
+  id: escitalopram
+  name: "Escitalopram (Lexapro)"
+  type: prescription
+  category: ssri
+  common_names:
+    - Lexapro
+    - escitalopram
+    - escitalopram oxalate
+
+  pharmacokinetics:
+    formulations:
+      - name: tablet
+        label: "Oral Tablet"
+        absorption_minutes: 60
+        peak_plasma_hours: 5
+        half_life_hours: 27
+        duration_hours: 24
+    food_effect: "Absorption not significantly affected by food"
+    ph_sensitivity: null
+
+  metabolism:
+    cyp450:
+      - enzyme: CYP2C19
+        role: substrate
+        significance: major
+        evidence: established
+      - enzyme: CYP3A4
+        role: substrate
+        significance: minor
+        evidence: established
+      - enzyme: CYP2D6
+        role: substrate
+        significance: minor
+        evidence: established
+    renal_excretion: true
+    ph_dependent: false
+
+  receptor_activity:
+    - system: serotonergic
+      mechanism: "Selectively inhibits serotonin reuptake transporter (SERT), increasing synaptic serotonin"
+      direction: increase
+      magnitude: strong
+
+  nutrient_effects:
+    depletions:
+      - nutrient: sodium
+        mechanism: "SIADH-mediated hyponatremia (rare but documented)"
+        evidence: established
+        clinical_significance: low
+      - nutrient: folate
+        mechanism: "May reduce folate metabolism; methylfolate supports serotonin synthesis"
+        evidence: possible
+        clinical_significance: low
+    requirements: []
+
+  oxidative_profile:
+    generates_ros: false
+    mechanism: null
+    mitochondrial_impact: null
+    neuroinflammation: null
+    evidence: null
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: morning
+    take_with_food: either
+    latest_recommended: null
+    spacing_requirements: []
+
+  safety:
+    serotonin_load: 0.7
+    cardiovascular_flag: false
+    appetite_suppression: false
+    sleep_disruption: false
+    emotional_blunting: true
+    contraindications:
+      - "MAO inhibitors (serotonin syndrome — CRITICAL)"
+      - "Pimozide (QT prolongation)"
+      - "Concurrent use with serotonin precursors (5-HTP, tryptophan supplements)"
+
+  metadata:
+    data_sources:
+      - "FDA: Lexapro Prescribing Information"
+      - "DrugBank: DB01175"
+    last_reviewed: "2026-03-30"
+    review_status: curated

@@ -1,0 +1,92 @@
+# 5-HTP (5-Hydroxytryptophan)
+# Source: PubMed, Examine.com, MSKCC
+# Last reviewed: 2026-03-31
+
+substance:
+  id: 5_htp
+  name: "5-HTP (5-Hydroxytryptophan)"
+  type: supplement
+  category: serotonin_precursor
+  common_names:
+    - 5-HTP
+    - 5-Hydroxytryptophan
+    - oxitriptan
+    - Griffonia seed extract
+
+  pharmacokinetics:
+    formulations:
+      - name: capsule
+        label: "Oral Capsule"
+        absorption_minutes: 30
+        peak_plasma_hours: 1.5
+        half_life_hours: 4
+        duration_hours: 6
+    food_effect: "Better absorbed on an empty stomach; food may slow absorption"
+
+  metabolism:
+    cyp450: []
+    renal_excretion: true
+    notes: "Converted directly to serotonin by aromatic L-amino acid decarboxylase (AADC). Does NOT require tryptophan hydroxylase — bypasses the rate-limiting step in serotonin synthesis."
+
+  receptor_activity:
+    - system: serotonergic
+      mechanism: "Direct serotonin precursor — converted to serotonin (5-HT) by AADC in both brain and periphery. Significantly increases serotonin levels."
+      direction: increase
+      magnitude: strong
+
+  nutrient_effects:
+    depletions:
+      - nutrient: dopamine
+        mechanism: "Chronic 5-HTP use without carbidopa may deplete dopamine and catecholamines by competing for AADC enzyme"
+        evidence: probable
+        clinical_significance: moderate
+    requirements: []
+    provides: []
+
+  oxidative_profile:
+    generates_ros: false
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: evening
+    take_with_food: either
+    notes: "Often taken in the evening for sleep support via serotonin→melatonin conversion. NEVER combine with SSRIs, SNRIs, MAOIs, or other serotonergic medications."
+
+  safety:
+    serotonin_load: 0.8
+    cardiovascular_flag: false
+    appetite_suppression: true
+    sleep_disruption: false
+    common_doses:
+      - dose_mg: 50
+        frequency: "once daily"
+        evidence: "Low starting dose"
+      - dose_mg: 100
+        frequency: "once to three times daily"
+        evidence: "Common in mood and sleep studies"
+      - dose_mg: 300
+        frequency: "total daily"
+        evidence: "Upper range in studies"
+    side_effects:
+      - "GI discomfort (nausea, diarrhea)"
+      - "Drowsiness"
+      - "Possible dopamine depletion with chronic use"
+    contraindications:
+      - "SSRIs (serotonin syndrome — CRITICAL)"
+      - "SNRIs (serotonin syndrome — CRITICAL)"
+      - "MAO inhibitors (serotonin syndrome — CRITICAL)"
+      - "Tramadol and other serotonergic drugs"
+      - "Triptans (serotonin syndrome risk)"
+      - "Carcinoid tumors"
+
+  metadata:
+    data_sources:
+      - "PubMed PMID:10696120 (5-HTP and serotonin syndrome risk)"
+      - "PubMed PMID:22615537 (5-HTP dopamine depletion concern)"
+      - "Examine.com: 5-HTP monograph"
+      - "MSKCC About Herbs: 5-HTP"
+    last_reviewed: "2026-03-31"
+    review_status: curated

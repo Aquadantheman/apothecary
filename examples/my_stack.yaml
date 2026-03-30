@@ -1,0 +1,13 @@
+# Dan's full stimulant day protocol
+# Prescriptions + supplements + dietary factors
+
+substances:
+  - id: adderall
+  - id: escitalopram
+  - id: l_theanine
+  - id: nac
+  - id: magnesium_glycinate
+  - id: omega3
+  - id: creatine
+  - id: melatonin
+  - id: caffeine

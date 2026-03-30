@@ -1,0 +1,95 @@
+# N-Acetyl Cysteine (NAC)
+# Source: PubMed, Examine.com, MSKCC About Herbs
+# Last reviewed: 2026-03-30
+
+substance:
+  id: nac
+  name: "N-Acetyl Cysteine (NAC)"
+  type: supplement
+  category: antioxidant
+  common_names:
+    - NAC
+    - N-Acetyl Cysteine
+    - N-Acetyl-L-Cysteine
+
+  pharmacokinetics:
+    formulations:
+      - name: capsule
+        label: "Oral Capsule"
+        absorption_minutes: 30
+        peak_plasma_hours: 1.5
+        half_life_hours: 6
+        duration_hours: 8
+    food_effect: "May be taken with or without food; some report better GI tolerance with food"
+    ph_sensitivity: null
+
+  metabolism:
+    cyp450: []
+    renal_excretion: true
+    ph_dependent: false
+    notes: "Minimal CYP450 involvement; primarily metabolized via deacetylation to cysteine"
+
+  receptor_activity:
+    - system: glutamatergic
+      mechanism: "Modulates glutamate via cystine-glutamate antiporter (system Xc-); restores extrasynaptic glutamate, reducing synaptic glutamate overflow"
+      direction: modulate
+      magnitude: moderate
+    - system: antioxidant
+      mechanism: "Precursor to glutathione (GSH), the brain's primary endogenous antioxidant; directly scavenges some ROS"
+      direction: increase
+      magnitude: moderate
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+    provides:
+      - nutrient: glutathione_precursor
+        mechanism: "Provides cysteine, the rate-limiting amino acid for glutathione synthesis"
+        evidence: established
+
+  oxidative_profile:
+    generates_ros: false
+    mechanism: "Antioxidant — reduces oxidative stress"
+    mitochondrial_impact: "Protective; supports mitochondrial glutathione pool"
+    neuroinflammation: "May reduce neuroinflammation via NF-kB modulation"
+    evidence: "Established (glutathione precursor); probable (neuroinflammation)"
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: midday
+    take_with_food: either
+    latest_recommended: null
+    spacing_requirements:
+      - substance_tag: stimulant
+        rule: separate_4h
+        reason: "Glutamate modulation may theoretically blunt stimulant efficacy if co-administered; limited evidence but commonly reported in ADHD communities"
+    notes: "Midday timing on stimulant days allows stimulant to reach peak before NAC's glutamate modulation takes effect; also aligns with peak oxidative stress window"
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    common_doses:
+      - dose_mg: 600
+        frequency: "once daily"
+        evidence: "Common in clinical studies"
+      - dose_mg: 1200
+        frequency: "600mg twice daily"
+        evidence: "Used in psychiatric and addiction studies"
+    side_effects:
+      - "GI discomfort (nausea, diarrhea) — dose-dependent"
+      - "Sulfurous smell/taste"
+    contraindications:
+      - "Active stomach ulcer (may increase gastric acid)"
+      - "Asthma (rare bronchospasm reported)"
+
+  metadata:
+    data_sources:
+      - "PubMed PMID:19103434 (NAC in psychiatry review)"
+      - "PubMed PMID:16808729 (Amphetamine oxidative stress — NAC relevance)"
+      - "Examine.com: NAC monograph"
+      - "MSKCC About Herbs: N-Acetylcysteine"
+    last_reviewed: "2026-03-30"
+    review_status: curated

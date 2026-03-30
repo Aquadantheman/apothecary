@@ -1,0 +1,85 @@
+# Vitamin D3 (Cholecalciferol)
+# Source: NIH ODS, PubMed, Examine.com
+# Last reviewed: 2026-03-31
+
+substance:
+  id: vitamin_d3
+  name: "Vitamin D3 (Cholecalciferol)"
+  type: supplement
+  category: vitamin
+  common_names:
+    - Vitamin D3
+    - Vitamin D
+    - Cholecalciferol
+    - D3
+
+  pharmacokinetics:
+    formulations:
+      - name: softgel
+        label: "Oral Softgel/Capsule"
+        absorption_minutes: 120
+        peak_plasma_hours: 12
+        half_life_hours: 360
+        duration_hours: 720
+    food_effect: "Significantly better absorbed with dietary fat"
+
+  metabolism:
+    cyp450:
+      - enzyme: CYP3A4
+        role: substrate
+        significance: minor
+        evidence: established
+      - enzyme: CYP2R1
+        role: substrate
+        significance: major
+        evidence: established
+    renal_excretion: false
+    notes: "Converted to 25(OH)D in liver (CYP2R1), then to active 1,25(OH)2D in kidneys (CYP27B1). Very long tissue half-life."
+
+  receptor_activity:
+    - system: serotonergic
+      mechanism: "Vitamin D regulates tryptophan hydroxylase 2 (TPH2) expression in the brain, influencing serotonin synthesis"
+      direction: modulate
+      magnitude: mild
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+    provides:
+      - nutrient: vitamin_d
+        mechanism: "Directly provides cholecalciferol for conversion to active vitamin D"
+        evidence: established
+
+  oxidative_profile:
+    generates_ros: false
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: morning
+    take_with_food: required
+    notes: "Take with a meal containing fat. Morning or midday preferred — some evidence that evening vitamin D may interfere with melatonin production, though this is debated."
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    common_doses:
+      - dose_mg: 25
+        frequency: "once daily (1000 IU)"
+        evidence: "General maintenance"
+      - dose_mg: 125
+        frequency: "once daily (5000 IU)"
+        evidence: "Common therapeutic dose for deficiency"
+    contraindications:
+      - "Hypercalcemia"
+      - "Granulomatous disease (sarcoidosis — unregulated vitamin D activation)"
+
+  metadata:
+    data_sources:
+      - "NIH Office of Dietary Supplements: Vitamin D Fact Sheet"
+      - "PubMed PMID:25713056 (Vitamin D and serotonin)"
+      - "Examine.com: Vitamin D monograph"
+    last_reviewed: "2026-03-31"
+    review_status: curated

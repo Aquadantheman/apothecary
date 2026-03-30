@@ -1,0 +1,100 @@
+# L-Theanine (Suntheanine)
+# Source: PubMed, Examine.com
+# Last reviewed: 2026-03-30
+
+substance:
+  id: l_theanine
+  name: "L-Theanine"
+  type: supplement
+  category: amino_acid
+  common_names:
+    - L-Theanine
+    - Theanine
+    - Suntheanine
+    - gamma-glutamylethylamide
+
+  pharmacokinetics:
+    formulations:
+      - name: capsule
+        label: "Oral Capsule/Softgel"
+        absorption_minutes: 30
+        peak_plasma_hours: 1.0
+        half_life_hours: 3
+        duration_hours: 5
+    food_effect: "Can be taken with or without food"
+    ph_sensitivity: null
+
+  metabolism:
+    cyp450: []
+    renal_excretion: true
+    ph_dependent: false
+    notes: "Metabolized in kidneys to glutamate and ethylamine; no significant CYP450 involvement"
+
+  receptor_activity:
+    - system: gabaergic
+      mechanism: "Increases GABA levels, promoting relaxation without sedation"
+      direction: increase
+      magnitude: mild
+    - system: serotonergic
+      mechanism: "Modestly increases serotonin levels"
+      direction: increase
+      magnitude: mild
+    - system: dopaminergic
+      mechanism: "Modestly increases dopamine levels"
+      direction: increase
+      magnitude: mild
+    - system: glutamatergic
+      mechanism: "Structural analog of glutamate; binds glutamate receptors as a weak antagonist, reducing excitatory signaling"
+      direction: modulate
+      magnitude: moderate
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+    provides: []
+
+  oxidative_profile:
+    generates_ros: false
+    mechanism: null
+    mitochondrial_impact: null
+    neuroinflammation: "May reduce neuroinflammation via glutamate modulation"
+    evidence: "Possible — limited human data"
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: morning
+    take_with_food: either
+    latest_recommended: null
+    spacing_requirements: []
+    notes: "Best taken with stimulant medication for synergistic modulation — L-theanine softens stimulant rigidity by promoting alpha brain wave activity while maintaining focus. Can also be taken in evening for relaxation."
+
+  safety:
+    serotonin_load: 0.1
+    cardiovascular_flag: false
+    appetite_suppression: false
+    sleep_disruption: false
+    common_doses:
+      - dose_mg: 100
+        frequency: "once or twice daily"
+        evidence: "Common in studies"
+      - dose_mg: 200
+        frequency: "once daily"
+        evidence: "Used in Suntheanine clinical trials; most common therapeutic dose"
+      - dose_mg: 400
+        frequency: "once daily"
+        evidence: "Upper range in some studies"
+    side_effects:
+      - "Generally very well tolerated"
+      - "Mild drowsiness at high doses (rare)"
+    contraindications: []
+
+  metadata:
+    data_sources:
+      - "PubMed PMID:18296328 (L-theanine and alpha brain waves)"
+      - "PubMed PMID:22214254 (L-theanine in ADHD boys — sleep quality)"
+      - "Examine.com: Theanine monograph"
+    last_reviewed: "2026-03-30"
+    review_status: curated

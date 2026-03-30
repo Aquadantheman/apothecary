@@ -1,0 +1,113 @@
+# Magnesium Glycinate
+# Source: PubMed, Examine.com, FDA
+# Last reviewed: 2026-03-30
+
+substance:
+  id: magnesium_glycinate
+  name: "Magnesium Glycinate"
+  type: supplement
+  category: mineral
+  common_names:
+    - Magnesium Glycinate
+    - Magnesium Bisglycinate
+    - Chelated Magnesium
+    - Magnesium
+
+  pharmacokinetics:
+    formulations:
+      - name: capsule
+        label: "Oral Capsule"
+        absorption_minutes: 45
+        peak_plasma_hours: 2.5
+        half_life_hours: 12
+        duration_hours: 24
+    food_effect: "Better absorbed with food; glycinate form has high bioavailability regardless"
+    ph_sensitivity: null
+
+  metabolism:
+    cyp450: []
+    renal_excretion: true
+    ph_dependent: false
+    notes: "Not metabolized via CYP450. Magnesium is absorbed in intestines and excreted renally. Glycine is an amino acid metabolized normally."
+
+  receptor_activity:
+    - system: gabaergic
+      mechanism: "Magnesium binds GABA-A receptors, enhancing inhibitory signaling. Glycine is itself an inhibitory neurotransmitter acting at glycine receptors."
+      direction: increase
+      magnitude: moderate
+    - system: glutamatergic
+      mechanism: "Voltage-dependent block of NMDA receptors; reduces excitatory glutamate signaling at resting potential"
+      direction: decrease
+      magnitude: moderate
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+    provides:
+      - nutrient: magnesium
+        mechanism: "Directly provides elemental magnesium in highly bioavailable chelated form"
+        evidence: established
+      - nutrient: glycine
+        mechanism: "Glycinate carrier provides glycine, an inhibitory neurotransmitter and collagen precursor"
+        evidence: established
+
+  oxidative_profile:
+    generates_ros: false
+    mechanism: "Protective — magnesium deficiency increases oxidative stress; repletion normalizes"
+    mitochondrial_impact: "Magnesium is a cofactor for ATP production; supports mitochondrial function"
+    neuroinflammation: null
+    evidence: "Established (magnesium role in ATP); probable (oxidative stress reduction)"
+
+  absorption:
+    enhancers: []
+    inhibitors:
+      - substance_id: stimulant
+        mechanism: "May reduce stimulant absorption if taken concurrently; alkalinizing effect may also slow stimulant excretion"
+        net_effect: decreases_effect
+        timing_note: "Take 8+ hours apart from stimulants; evening dosing is optimal"
+
+  timing:
+    optimal_window: evening
+    take_with_food: recommended
+    latest_recommended: null
+    spacing_requirements:
+      - substance_tag: stimulant
+        rule: separate_8h
+        reason: "Potential absorption interference with amphetamines; evening dosing avoids this and aligns with calming/sleep-supportive effects"
+      - substance_tag: levothyroxine
+        rule: separate_4h
+        reason: "Magnesium can bind levothyroxine in the GI tract, reducing its absorption"
+      - substance_tag: iron
+        rule: separate_2h
+        reason: "Magnesium and iron compete for absorption"
+    notes: "Evening timing aligns with calming GABA/glycine effects, avoids stimulant interference, and supports sleep onset. May slow amphetamine tolerance development via NMDA antagonism."
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    appetite_suppression: false
+    sleep_disruption: false
+    common_doses:
+      - dose_mg: 200
+        frequency: "once daily"
+        evidence: "Lower end of therapeutic range"
+      - dose_mg: 300
+        frequency: "once daily"
+        evidence: "Common in clinical studies"
+      - dose_mg: 400
+        frequency: "once daily or split"
+        evidence: "Upper end of typical supplementation"
+    side_effects:
+      - "GI discomfort at high doses (less common with glycinate form)"
+      - "Loose stools (much less than citrate or oxide forms)"
+    contraindications:
+      - "Severe renal impairment (kidneys cannot clear excess magnesium)"
+      - "Myasthenia gravis"
+
+  metadata:
+    data_sources:
+      - "PubMed PMID:28392498 (Magnesium and sleep quality)"
+      - "PubMed PMID:31691193 (Magnesium and NMDA receptor)"
+      - "Examine.com: Magnesium monograph"
+    last_reviewed: "2026-03-30"
+    review_status: curated

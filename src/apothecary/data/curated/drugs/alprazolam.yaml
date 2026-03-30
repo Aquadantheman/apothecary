@@ -1,0 +1,79 @@
+# Alprazolam (Xanax)
+# Source: FDA prescribing information, DrugBank DB00404
+# Last reviewed: 2026-03-31
+
+substance:
+  id: alprazolam
+  name: "Alprazolam (Xanax)"
+  type: prescription
+  category: benzodiazepine
+  common_names:
+    - Xanax
+    - Xanax XR
+    - alprazolam
+
+  pharmacokinetics:
+    formulations:
+      - name: IR
+        label: "Immediate Release"
+        absorption_minutes: 15
+        peak_plasma_hours: 1.5
+        half_life_hours: 11
+        duration_hours: 6
+      - name: XR
+        label: "Extended Release"
+        absorption_minutes: 60
+        peak_plasma_hours: 9
+        half_life_hours: 11
+        duration_hours: 24
+
+  metabolism:
+    cyp450:
+      - enzyme: CYP3A4
+        role: substrate
+        significance: major
+        evidence: established
+    renal_excretion: true
+    ph_dependent: false
+
+  receptor_activity:
+    - system: gabaergic
+      mechanism: "Positive allosteric modulator of GABA-A receptors; enhances the effect of GABA, producing anxiolytic, sedative, and muscle relaxant effects"
+      direction: increase
+      magnitude: strong
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+
+  oxidative_profile:
+    generates_ros: false
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: null
+    take_with_food: either
+    notes: "Taken as needed or on a schedule per prescriber. Do not combine with alcohol or other CNS depressants."
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    appetite_suppression: false
+    sleep_disruption: false
+    tolerance_development: true
+    contraindications:
+      - "Alcohol (additive CNS depression — potentially fatal)"
+      - "Opioids (additive respiratory depression — CRITICAL)"
+      - "Ketoconazole, itraconazole (strong CYP3A4 inhibitors — raises alprazolam levels)"
+      - "Acute narrow-angle glaucoma"
+      - "Do NOT stop abruptly — requires taper (seizure risk)"
+
+  metadata:
+    data_sources:
+      - "FDA: Xanax Prescribing Information"
+      - "DrugBank: DB00404"
+    last_reviewed: "2026-03-31"
+    review_status: curated

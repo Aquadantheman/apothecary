@@ -1,0 +1,93 @@
+# Levothyroxine (Synthroid)
+# Source: FDA prescribing information, DrugBank DB00451
+# Last reviewed: 2026-03-31
+
+substance:
+  id: levothyroxine
+  name: "Levothyroxine (Synthroid)"
+  type: prescription
+  category: thyroid_hormone
+  common_names:
+    - Synthroid
+    - levothyroxine
+    - Levoxyl
+    - T4
+    - Tirosint
+
+  pharmacokinetics:
+    formulations:
+      - name: tablet
+        label: "Oral Tablet"
+        absorption_minutes: 30
+        peak_plasma_hours: 4
+        half_life_hours: 168
+        duration_hours: 168
+    food_effect: "Absorption significantly reduced by food, especially soy, fiber, and calcium. Take on empty stomach."
+    ph_sensitivity: "Requires acidic gastric environment for optimal absorption"
+
+  metabolism:
+    cyp450: []
+    renal_excretion: false
+    ph_dependent: true
+    notes: "Metabolized by deiodination in peripheral tissues. Not CYP450 dependent. Extremely sensitive to absorption interference."
+
+  receptor_activity: []
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+
+  oxidative_profile:
+    generates_ros: false
+
+  absorption:
+    enhancers: []
+    inhibitors:
+      - substance_id: calcium
+        mechanism: "Calcium binds levothyroxine in GI tract, reducing absorption by up to 40%"
+        net_effect: decreases_effect
+        timing_note: "Separate by 4+ hours"
+      - substance_id: iron
+        mechanism: "Iron forms insoluble complex with levothyroxine"
+        net_effect: decreases_effect
+        timing_note: "Separate by 4+ hours"
+      - substance_id: magnesium
+        mechanism: "Magnesium can bind levothyroxine in GI tract"
+        net_effect: decreases_effect
+        timing_note: "Separate by 4+ hours"
+
+  timing:
+    optimal_window: morning
+    take_with_food: empty_stomach
+    notes: "Take first thing in the morning, 30-60 minutes BEFORE breakfast and all other medications/supplements. This is one of the most absorption-sensitive medications — coffee, fiber, soy, calcium, iron, magnesium, and antacids all interfere."
+    spacing_requirements:
+      - substance_tag: calcium
+        rule: separate_4h
+        reason: "Calcium chelates levothyroxine, reducing absorption significantly"
+      - substance_tag: iron
+        rule: separate_4h
+        reason: "Iron forms insoluble complex with levothyroxine"
+      - substance_tag: magnesium
+        rule: separate_4h
+        reason: "Magnesium can bind levothyroxine in GI tract"
+      - substance_tag: ppi
+        rule: caution
+        reason: "PPIs reduce gastric acid needed for levothyroxine absorption"
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: true
+    appetite_suppression: false
+    sleep_disruption: true
+    contraindications:
+      - "Untreated adrenal insufficiency (must treat adrenals first)"
+      - "Acute myocardial infarction"
+      - "Thyrotoxicosis"
+
+  metadata:
+    data_sources:
+      - "FDA: Synthroid Prescribing Information"
+      - "DrugBank: DB00451"
+      - "ATA Guidelines for Hypothyroidism"
+    last_reviewed: "2026-03-31"
+    review_status: curated

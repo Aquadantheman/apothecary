@@ -1,0 +1,110 @@
+# Melatonin (IR/XR - Immediate and Extended Release)
+# Source: PubMed, FDA, Sleep Foundation
+# Last reviewed: 2026-03-30
+
+substance:
+  id: melatonin
+  name: "Melatonin (IR/XR)"
+  type: supplement
+  category: hormone
+  common_names:
+    - Melatonin
+    - Melatonin IR/XR
+    - MicroActive Melatonin
+    - sustained release melatonin
+    - time release melatonin
+
+  pharmacokinetics:
+    formulations:
+      - name: IR
+        label: "Immediate Release"
+        absorption_minutes: 20
+        peak_plasma_hours: 0.75
+        half_life_hours: 0.75
+        duration_hours: 2
+      - name: XR
+        label: "Extended Release"
+        absorption_minutes: 30
+        peak_plasma_hours: 2.0
+        half_life_hours: 4
+        duration_hours: 7
+      - name: IR_XR
+        label: "Combined IR/XR (MicroActive)"
+        absorption_minutes: 20
+        peak_plasma_hours: 1.0
+        half_life_hours: 3
+        duration_hours: 7
+    food_effect: "Food may delay absorption slightly; take on relatively empty stomach for fastest onset"
+    ph_sensitivity: null
+
+  metabolism:
+    cyp450:
+      - enzyme: CYP1A2
+        role: substrate
+        significance: major
+        evidence: established
+    renal_excretion: true
+    ph_dependent: false
+    notes: "Primarily metabolized by CYP1A2 to 6-hydroxymelatonin. CYP1A2 inducers (smoking, chargrilled meat) increase clearance."
+
+  receptor_activity:
+    - system: serotonergic
+      mechanism: "Synthesized from serotonin via N-acetyltransferase and HIOMT in the pineal gland. Exogenous melatonin does not directly increase serotonin but is part of the serotonin-melatonin pathway."
+      direction: modulate
+      magnitude: mild
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+    provides: []
+
+  oxidative_profile:
+    generates_ros: false
+    mechanism: "Potent direct antioxidant — scavenges hydroxyl radicals, peroxyl radicals, and peroxynitrite"
+    mitochondrial_impact: "Protective — accumulates in mitochondria and reduces mitochondrial oxidative damage"
+    neuroinflammation: null
+    evidence: "Established (antioxidant properties)"
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: pre_bed
+    take_with_food: either
+    latest_recommended: null
+    spacing_requirements: []
+    notes: "Take 30-60 minutes before target sleep time. Do not take in the middle of the night (disrupts circadian rhythm). Low doses (0.5-1.5mg) are often more effective than high doses (5-10mg) for sleep onset. IR/XR formulations address both sleep onset and sleep maintenance."
+
+  safety:
+    serotonin_load: 0.05
+    cardiovascular_flag: false
+    appetite_suppression: false
+    sleep_disruption: false
+    common_doses:
+      - dose_mg: 0.5
+        frequency: "once at bedtime"
+        evidence: "Effective for many; physiological dose range"
+      - dose_mg: 1.5
+        frequency: "once at bedtime"
+        evidence: "Common in IR/XR formulations (Life Extension MicroActive)"
+      - dose_mg: 3.0
+        frequency: "once at bedtime"
+        evidence: "Common OTC dose; may be more than needed"
+    side_effects:
+      - "Next-day grogginess (especially at doses >3mg)"
+      - "Vivid dreams"
+      - "Mid-night waking when IR formulation wears off"
+      - "Headache (uncommon)"
+    contraindications:
+      - "Autoimmune conditions (melatonin modulates immune function)"
+      - "Use with caution alongside immunosuppressants"
+      - "Use with caution alongside anticoagulants"
+
+  metadata:
+    data_sources:
+      - "PubMed PMID:15649737 (Meta-analysis of melatonin for sleep)"
+      - "Sleep Foundation: Melatonin dosage guide"
+      - "Life Extension: MicroActive Melatonin pharmacokinetic data"
+    last_reviewed: "2026-03-30"
+    review_status: curated

@@ -1,0 +1,99 @@
+# Fluoxetine (Prozac)
+# Source: FDA prescribing information, DrugBank DB00472
+# Last reviewed: 2026-03-31
+
+substance:
+  id: fluoxetine
+  name: "Fluoxetine (Prozac)"
+  type: prescription
+  category: ssri
+  common_names:
+    - Prozac
+    - fluoxetine
+    - Sarafem
+
+  pharmacokinetics:
+    formulations:
+      - name: capsule
+        label: "Oral Capsule"
+        absorption_minutes: 60
+        peak_plasma_hours: 6
+        half_life_hours: 72
+        duration_hours: 24
+    food_effect: "Food does not significantly affect absorption"
+    ph_sensitivity: null
+
+  metabolism:
+    cyp450:
+      - enzyme: CYP2D6
+        role: substrate
+        significance: major
+        evidence: established
+      - enzyme: CYP2C9
+        role: substrate
+        significance: minor
+        evidence: established
+      - enzyme: CYP2D6
+        role: inhibitor
+        significance: major
+        evidence: established
+      - enzyme: CYP3A4
+        role: inhibitor
+        significance: minor
+        evidence: established
+      - enzyme: CYP2C19
+        role: inhibitor
+        significance: moderate
+        evidence: established
+    renal_excretion: true
+    ph_dependent: false
+    notes: "Very long half-life (72h parent, 4-16 days for active metabolite norfluoxetine). Potent CYP2D6 inhibitor — major source of drug interactions."
+
+  receptor_activity:
+    - system: serotonergic
+      mechanism: "Selectively inhibits SERT, increasing synaptic serotonin. Most activating of the SSRIs."
+      direction: increase
+      magnitude: strong
+
+  nutrient_effects:
+    depletions:
+      - nutrient: sodium
+        mechanism: "SIADH-mediated hyponatremia"
+        evidence: established
+        clinical_significance: low
+      - nutrient: folate
+        mechanism: "May impair folate metabolism"
+        evidence: possible
+        clinical_significance: low
+    requirements: []
+
+  oxidative_profile:
+    generates_ros: false
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: morning
+    take_with_food: either
+    notes: "Most activating SSRI — morning dosing preferred to avoid insomnia. Very long half-life means missed doses are less impactful but also means 5-week washout required before MAOIs."
+
+  safety:
+    serotonin_load: 0.75
+    cardiovascular_flag: false
+    appetite_suppression: true
+    sleep_disruption: true
+    emotional_blunting: true
+    contraindications:
+      - "MAO inhibitors (serotonin syndrome — CRITICAL; 5-week washout required)"
+      - "Pimozide"
+      - "Thioridazine"
+      - "Concurrent 5-HTP or tryptophan supplements"
+
+  metadata:
+    data_sources:
+      - "FDA: Prozac Prescribing Information"
+      - "DrugBank: DB00472"
+    last_reviewed: "2026-03-31"
+    review_status: curated
