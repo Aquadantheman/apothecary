@@ -1,0 +1,80 @@
+# Zinc (Zinc Picolinate / Zinc Bisglycinate)
+# Source: NIH ODS, PubMed
+# Last reviewed: 2026-03-31
+
+substance:
+  id: zinc
+  name: "Zinc (Zinc Picolinate)"
+  type: supplement
+  category: mineral
+  common_names:
+    - Zinc
+    - Zinc Picolinate
+    - Zinc Bisglycinate
+    - Zinc Gluconate
+    - Zinc Citrate
+
+  pharmacokinetics:
+    formulations:
+      - name: capsule
+        label: "Oral Capsule"
+        absorption_minutes: 60
+        peak_plasma_hours: 3
+        half_life_hours: 12
+        duration_hours: 24
+
+  metabolism:
+    cyp450: []
+    renal_excretion: false
+    notes: "Absorbed in the small intestine. Competes with copper for absorption — chronic zinc supplementation can deplete copper."
+
+  receptor_activity: []
+
+  nutrient_effects:
+    depletions:
+      - nutrient: copper
+        mechanism: "Zinc induces metallothionein in intestinal cells which binds copper, reducing its absorption"
+        evidence: established
+        clinical_significance: moderate
+    requirements: []
+    provides:
+      - nutrient: zinc
+        mechanism: "Directly provides zinc for immune function, wound healing, DNA synthesis, and taste/smell"
+        evidence: established
+
+  oxidative_profile:
+    generates_ros: false
+    mechanism: "Antioxidant — component of superoxide dismutase (SOD)"
+
+  absorption:
+    enhancers: []
+    inhibitors:
+      - substance_id: iron
+        mechanism: "Iron and zinc compete for absorption via DMT1 transporter"
+        net_effect: decreases_effect
+        timing_note: "Separate iron and zinc by 2+ hours"
+
+  timing:
+    optimal_window: evening
+    take_with_food: recommended
+    notes: "Take with food to reduce nausea (common on empty stomach). Evening dosing is fine. Separate from iron supplements by 2+ hours."
+    spacing_requirements:
+      - substance_tag: iron
+        rule: separate_2h
+        reason: "Iron and zinc compete for absorption"
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    side_effects:
+      - "Nausea on empty stomach"
+      - "Copper depletion with chronic use >40mg daily"
+    contraindications:
+      - "Doses >40mg daily require copper co-supplementation"
+
+  metadata:
+    data_sources:
+      - "NIH Office of Dietary Supplements: Zinc Fact Sheet"
+    last_reviewed: "2026-03-31"
+    review_status: curated
+    data_tier: tier_1

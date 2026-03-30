@@ -1,0 +1,91 @@
+# Iron (Ferrous Bisglycinate / Ferrous Sulfate)
+# Source: NIH ODS, PubMed
+# Last reviewed: 2026-03-31
+
+substance:
+  id: iron
+  name: "Iron (Ferrous Bisglycinate)"
+  type: supplement
+  category: mineral
+  common_names:
+    - Iron
+    - Ferrous Sulfate
+    - Ferrous Bisglycinate
+    - Ferrous Gluconate
+    - Iron Supplement
+
+  pharmacokinetics:
+    formulations:
+      - name: tablet
+        label: "Oral Tablet"
+        absorption_minutes: 60
+        peak_plasma_hours: 4
+        half_life_hours: 6
+        duration_hours: 24
+    food_effect: "Best absorbed on empty stomach, but GI side effects common — take with small amount of food if needed. Vitamin C enhances absorption."
+
+  metabolism:
+    cyp450: []
+    renal_excretion: false
+    notes: "Not metabolized by CYP450. Absorbed in duodenum; regulated by hepcidin. Chelated forms (bisglycinate) better tolerated than ferrous sulfate."
+
+  receptor_activity: []
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+    provides:
+      - nutrient: iron
+        mechanism: "Directly provides elemental iron for hemoglobin synthesis and oxygen transport"
+        evidence: established
+
+  oxidative_profile:
+    generates_ros: true
+    mechanism: "Free iron can catalyze Fenton reaction generating hydroxyl radicals. Only supplement when deficient — excess iron is pro-oxidant."
+    evidence: "Established"
+
+  absorption:
+    enhancers:
+      - substance_id: vitamin_c
+        mechanism: "Vitamin C reduces ferric to ferrous iron, dramatically improving absorption"
+        net_effect: increases_effect
+        timing_note: "Take together for best absorption"
+    inhibitors:
+      - substance_id: calcium
+        mechanism: "Calcium competes with iron for absorption"
+        net_effect: decreases_effect
+        timing_note: "Separate by 2+ hours"
+
+  timing:
+    optimal_window: morning
+    take_with_food: either
+    notes: "Take on empty stomach for best absorption, or with a small amount of food and vitamin C if GI upset occurs. Separate from calcium, antacids, PPIs, and levothyroxine by 2-4 hours."
+    spacing_requirements:
+      - substance_tag: calcium
+        rule: separate_2h
+        reason: "Calcium inhibits iron absorption"
+      - substance_tag: ppi
+        rule: caution
+        reason: "PPIs reduce gastric acid needed for iron absorption"
+      - substance_tag: thyroid_hormone
+        rule: separate_4h
+        reason: "Iron chelates levothyroxine"
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    side_effects:
+      - "Constipation (most common)"
+      - "Nausea and stomach cramps"
+      - "Dark stools (normal)"
+    contraindications:
+      - "Hemochromatosis or iron overload disorders"
+      - "Do NOT supplement without confirmed deficiency (serum ferritin test)"
+      - "Thalassemia and other hemolytic anemias (may worsen iron overload)"
+
+  metadata:
+    data_sources:
+      - "NIH Office of Dietary Supplements: Iron Fact Sheet"
+    last_reviewed: "2026-03-31"
+    review_status: curated
+    data_tier: tier_1

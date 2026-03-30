@@ -1,0 +1,75 @@
+# Methylfolate (L-Methylfolate / 5-MTHF)
+# Source: NIH ODS, PubMed
+# Last reviewed: 2026-03-31
+
+substance:
+  id: methylfolate
+  name: "Methylfolate (L-5-MTHF)"
+  type: supplement
+  category: vitamin
+  common_names:
+    - Methylfolate
+    - L-Methylfolate
+    - 5-MTHF
+    - Folate
+    - Folic Acid
+    - Deplin
+    - Methyl Folate
+
+  pharmacokinetics:
+    formulations:
+      - name: tablet
+        label: "Oral Tablet/Capsule"
+        absorption_minutes: 30
+        peak_plasma_hours: 2
+        half_life_hours: 3
+        duration_hours: 24
+
+  metabolism:
+    cyp450: []
+    renal_excretion: true
+    notes: "L-methylfolate is the biologically active form of folate. Unlike folic acid, it does not require MTHFR enzyme conversion — important for the ~40% of people with MTHFR polymorphisms who poorly convert folic acid."
+
+  receptor_activity:
+    - system: serotonergic
+      mechanism: "Folate is a cofactor for BH4 synthesis, which is required for tryptophan hydroxylase (serotonin synthesis) and tyrosine hydroxylase (dopamine synthesis)"
+      direction: modulate
+      magnitude: mild
+    - system: dopaminergic
+      mechanism: "Required for BH4-dependent dopamine synthesis"
+      direction: modulate
+      magnitude: mild
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+    provides:
+      - nutrient: folate
+        mechanism: "Directly provides bioavailable methylfolate, bypassing MTHFR conversion"
+        evidence: established
+
+  oxidative_profile:
+    generates_ros: false
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: morning
+    take_with_food: either
+    notes: "Can be taken any time. Often paired with B12 since folate and B12 metabolism are interlinked — supplementing folate without adequate B12 can mask B12 deficiency."
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    contraindications:
+      - "Always supplement B12 alongside folate to avoid masking B12 deficiency"
+
+  metadata:
+    data_sources:
+      - "NIH Office of Dietary Supplements: Folate Fact Sheet"
+      - "PubMed PMID:25902009 (L-methylfolate and depression)"
+    last_reviewed: "2026-03-31"
+    review_status: curated
+    data_tier: tier_1

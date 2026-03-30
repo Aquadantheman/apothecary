@@ -1,0 +1,77 @@
+# Calcium (Calcium Citrate)
+# Source: NIH ODS, PubMed
+# Last reviewed: 2026-03-31
+
+substance:
+  id: calcium
+  name: "Calcium (Calcium Citrate)"
+  type: supplement
+  category: mineral
+  common_names:
+    - Calcium
+    - Calcium Citrate
+    - Calcium Carbonate
+    - Cal-Citrate
+    - Caltrate
+
+  pharmacokinetics:
+    formulations:
+      - name: tablet
+        label: "Oral Tablet"
+        absorption_minutes: 60
+        peak_plasma_hours: 4
+        half_life_hours: 6
+        duration_hours: 12
+    food_effect: "Calcium citrate can be taken with or without food. Calcium carbonate requires food/acid for absorption."
+
+  metabolism:
+    cyp450: []
+    renal_excretion: true
+    notes: "Calcium citrate is preferred for people on PPIs since it doesn't require stomach acid for absorption. Calcium carbonate requires acidic environment."
+
+  receptor_activity: []
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+    provides:
+      - nutrient: calcium
+        mechanism: "Directly provides calcium for bone health, muscle contraction, and nerve signaling"
+        evidence: established
+
+  oxidative_profile:
+    generates_ros: false
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: evening
+    take_with_food: recommended
+    notes: "Split doses (no more than 500mg at a time for best absorption). Separate from iron, levothyroxine, and certain antibiotics by 2-4 hours. Calcium citrate is better tolerated and doesn't require food."
+    spacing_requirements:
+      - substance_tag: iron
+        rule: separate_2h
+        reason: "Calcium inhibits iron absorption"
+      - substance_tag: thyroid_hormone
+        rule: separate_4h
+        reason: "Calcium chelates levothyroxine"
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    side_effects:
+      - "Constipation (especially calcium carbonate)"
+      - "Bloating"
+    contraindications:
+      - "Hypercalcemia"
+      - "History of calcium-containing kidney stones"
+      - "Some evidence of cardiovascular risk with high supplemental calcium (>1000mg/day) without vitamin D"
+
+  metadata:
+    data_sources:
+      - "NIH Office of Dietary Supplements: Calcium Fact Sheet"
+    last_reviewed: "2026-03-31"
+    review_status: curated
+    data_tier: tier_1

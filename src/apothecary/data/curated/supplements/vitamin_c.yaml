@@ -1,0 +1,68 @@
+# Vitamin C (Ascorbic Acid)
+# Source: NIH ODS, PubMed
+# Last reviewed: 2026-03-31
+
+substance:
+  id: vitamin_c
+  name: "Vitamin C (Ascorbic Acid)"
+  type: supplement
+  category: vitamin
+  common_names:
+    - Vitamin C
+    - Ascorbic Acid
+    - L-Ascorbic Acid
+
+  pharmacokinetics:
+    formulations:
+      - name: tablet
+        label: "Oral Tablet/Capsule"
+        absorption_minutes: 30
+        peak_plasma_hours: 2
+        half_life_hours: 10
+        duration_hours: 12
+
+  metabolism:
+    cyp450: []
+    renal_excretion: true
+    notes: "Water-soluble; excess excreted renally. Absorption decreases at higher doses — 500mg doses are better absorbed than 1000mg single doses."
+
+  receptor_activity:
+    - system: antioxidant
+      mechanism: "Primary water-soluble antioxidant; regenerates vitamin E and glutathione. Cofactor for dopamine beta-hydroxylase (dopamine → norepinephrine conversion)."
+      direction: increase
+      magnitude: moderate
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+    provides:
+      - nutrient: vitamin_c
+        mechanism: "Directly provides ascorbic acid"
+        evidence: established
+
+  oxidative_profile:
+    generates_ros: false
+    mechanism: "Potent antioxidant — scavenges ROS, regenerates other antioxidants"
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: morning
+    take_with_food: either
+    notes: "Can be taken any time. Enhances iron absorption when taken together — beneficial for iron supplementation, but separate from calcium. High doses (>500mg) may cause GI discomfort."
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    contraindications:
+      - "History of kidney stones (high doses increase oxalate excretion)"
+      - "Hemochromatosis (enhances iron absorption)"
+
+  metadata:
+    data_sources:
+      - "NIH Office of Dietary Supplements: Vitamin C Fact Sheet"
+    last_reviewed: "2026-03-31"
+    review_status: curated
+    data_tier: tier_1

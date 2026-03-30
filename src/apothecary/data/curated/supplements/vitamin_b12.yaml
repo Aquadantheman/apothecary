@@ -1,0 +1,70 @@
+# Vitamin B12 (Methylcobalamin)
+# Source: NIH ODS, PubMed
+# Last reviewed: 2026-03-31
+
+substance:
+  id: vitamin_b12
+  name: "Vitamin B12 (Methylcobalamin)"
+  type: supplement
+  category: vitamin
+  common_names:
+    - Vitamin B12
+    - Methylcobalamin
+    - B12
+    - Cobalamin
+    - Cyanocobalamin
+
+  pharmacokinetics:
+    formulations:
+      - name: sublingual
+        label: "Sublingual Tablet"
+        absorption_minutes: 15
+        peak_plasma_hours: 1
+        half_life_hours: 6
+        duration_hours: 24
+      - name: oral
+        label: "Oral Tablet/Capsule"
+        absorption_minutes: 60
+        peak_plasma_hours: 3
+        half_life_hours: 6
+        duration_hours: 24
+    food_effect: "Can be taken with or without food"
+
+  metabolism:
+    cyp450: []
+    renal_excretion: true
+    notes: "Water-soluble; excess excreted renally. Absorption requires intrinsic factor from the stomach. PPIs and metformin can impair absorption. Methylcobalamin is the active coenzyme form."
+
+  receptor_activity: []
+
+  nutrient_effects:
+    depletions: []
+    requirements: []
+    provides:
+      - nutrient: vitamin_b12
+        mechanism: "Directly provides methylcobalamin for methylation reactions, nerve function, and red blood cell formation"
+        evidence: established
+
+  oxidative_profile:
+    generates_ros: false
+
+  absorption:
+    enhancers: []
+    inhibitors: []
+
+  timing:
+    optimal_window: morning
+    take_with_food: either
+    notes: "Morning preferred as B12 can be mildly energizing. Sublingual form bypasses GI absorption issues — particularly useful for people on PPIs or metformin."
+
+  safety:
+    serotonin_load: 0.0
+    cardiovascular_flag: false
+    contraindications: []
+
+  metadata:
+    data_sources:
+      - "NIH Office of Dietary Supplements: Vitamin B12 Fact Sheet"
+    last_reviewed: "2026-03-31"
+    review_status: curated
+    data_tier: tier_1
